@@ -46,11 +46,11 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
-        
+
 	//Users
     Route::post('users/store', 'UserController@store')->name('users.store')
 		->middleware('permission:users.create');
-	
+
 	Route::get('users', 'UserController@index')->name('users.index')
 		->middleware('permission:users.index');
 
@@ -72,4 +72,12 @@ Route::middleware(['auth'])->group(function () {
 	//Postulante
 	Route::get('postulantes/notas', 'PostulanteController@index')->name('postulantes.index')
 		->middleware('permission:postulantes.index');
+});
+
+Route::prefix('convocatoria')->group(function () {
+    Route::post('registrar',
+        'ConvocatoriaController@registrarConvocatoria')
+			->name('convocatoria.registrar.submit');
+	Route::get('idConvocatoria', 'ConvocatoriaController@verificarIdConvocatoria');
+	Route::get('nombreConvocatoria', 'ConvocatoriaController@verificarNombreConvocatoria');
 });
