@@ -75,9 +75,11 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::prefix('convocatoria')->group(function () {
+	Route::get('registrar', 'ConvocatoriasController@formularioRegistrarConvocatoria')->name('convocatoria.registrar');
     Route::post('registrar',
-        'ConvocatoriaController@registrarConvocatoria')
+        'ConvocatoriasController@registrarConvocatoria')
 			->name('convocatoria.registrar.submit');
-	Route::get('idConvocatoria', 'ConvocatoriaController@verificarIdConvocatoria');
-	Route::get('nombreConvocatoria', 'ConvocatoriaController@verificarNombreConvocatoria');
+	Route::get('idConvocatoria', 'ConvocatoriasController@verificarIdConvocatoria');
+	Route::get('nombreConvocatoria', 'ConvocatoriasController@verificarNombreConvocatoria');
 });
+

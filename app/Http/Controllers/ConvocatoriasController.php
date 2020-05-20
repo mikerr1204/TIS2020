@@ -46,4 +46,9 @@ class ConvocatoriasController extends Controller
         return response()->json(['existe' => $existe]);
     }
 
+    public function formularioRegistrarConvocatoria()
+    {
+        return view('convocatoria');
+    }
+
 }
