@@ -48,7 +48,7 @@ class ConvocatoriasController extends Controller
 
     public function formularioRegistrarConvocatoria()
     {
-        return view('convocatoria');
+        return view('convocatorias/convocatoria');
     }
 
 }
