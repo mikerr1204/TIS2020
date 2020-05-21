@@ -1,4 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+
 <head>
+<meta charset="utf-8">
+    <title>Convocatorias | Registrar</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/lte/bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="/lte/bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/lte/dist/css/AdminLTE.min.css">
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="/lte/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/lte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/lte/plugins/iCheck/all.css">
+    <!-- Bootstrap Color Picker -->
+    <link rel="stylesheet" href="/lte/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="/lte/plugins/timepicker/bootstrap-timepicker.min.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/lte/bower_components/select2/dist/css/select2.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/lte/dist/css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="/lte/dist/css/skins/_all-skins.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+        page. However, you can choose any other skin. Make sure you
+        apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="/lte/dist/css/skins/skin-blue.min.css">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+
     <style>
         .texto-rojo {
             color: red;
@@ -41,7 +84,6 @@
             box-shadow: 0 0 5px 2px red;
         }
     </style>
-
 </head>
 
 <div class="container">
@@ -61,9 +103,9 @@
                     <form method="POST" action="{{route('convocatoria.registrar.submit')}}" id="form-reg-mat">
                         {{ csrf_field() }}
 
-                        <div class="" id="convocatoria_div">
+                        <div class="" id="idConvocatoria_div">
                             <label class="control-label" for="idConvocatoria">Codigo convocatoria: <span class="texto-rojo">*</span></label>
-                            <input type="text" class="form-control" name="idConvocatoria" id="codConvocatoria" placeholder="Ingrese solo números" autocomplete="ÑÖcompletes" onkeypress="return validaNumericos(event, 'idConvocatoria', 7);" value="{{old('codConvocatoria')}}" required>
+                            <input type="text" class="form-control" name="idConvocatoria" id="idConvocatoria" placeholder="Ingrese solo números" autocomplete="ÑÖcompletes" onkeypress="return validaNumericos(event, 'idConvocatoria', 7);" value="{{old('idConvocatoria')}}" required>
                             <p class="invalid-feedback {{$errors->first('idConvocatoria')? '' : 'hidden'}}" id="idConvocatoria_error">{{$errors->first('idConvocatoria')}}</p>
                             <p class="info text-right" id="idConvocatoria_p">(Solo números, max 7 dig.)</p>
                         </div>
@@ -112,8 +154,8 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
 
-{{-- @section('scripts') --}}
 <script>
     /*en chrome la tecla retroceso <-- es reconocido por el navegador y no entra a esta funcion
       en cambio en mozilla cuando se pulsa la tecla retroceso, entar a esta funcion
@@ -250,3 +292,5 @@
         }
     }
 </script>
+
+</html>
