@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-center primary-color">
-    <h5>Lista de Usuarios</h5>
-</div>
+<h3>Lista de Usuarios</h3>
 <div class="d-flex justify-content-center">
     <table class="table table-sm table-hover">
         <thead class="thead-light">

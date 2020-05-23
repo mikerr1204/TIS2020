@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-center primary-color">
-    <h5>Detalles de Rol</h5>
-</div>
+<h3>Detalles de Rol</h3>
 <div class="d-flex justify-content-center">
     <table class="table table-bordered">
         <thead class="">

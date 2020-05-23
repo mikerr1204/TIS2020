@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-center primary-color">
-    <h5>
-        @foreach (Auth::user()->roles as $role)
-            Bienvenido {{$role->name}}
-        @endforeach
-    </h5>
-</div>
-<div class="p-5">
+<h3>
+    @foreach (Auth::user()->roles as $role)
+        Bienvenido {{$role->name}}
+    @endforeach
+</h3>
+<div class="container m-3 p-2">
     <div>
         <h4>
             Bienvenido {{ Auth::user()->name }}

@@ -15,6 +15,9 @@ class UsersTableSeeder extends Seeder
         //Administrador
         User::create([
             'name'       => 'Adm',
+            'apellido'       => 'Adm',
+            'sis'       => '123456789',
+            'ci'       => '1234567',
             'email'      => 'adm@gmail.com',
             'password'      => '$2y$10$eBGatcDo6yl47bBqW.QHX.6byBlRsRMn/rzjSML86yu1HHdRpexv6',
         ]);

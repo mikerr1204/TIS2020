@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-center primary-color">
-    <h5>Detalles de Usuario</h5>
-</div>
+<h3>Detalles de Usuario</h3>
 <div class="d-flex justify-content-center">
     <table class="table table-bordered mt-3">
         <tbody>
@@ -12,12 +10,20 @@
                 <th>{{$user->name}}</th>
             </tr>
             <tr class="">
+                <th><strong>Apellido</strong></th>
+                <th>{{$user->apellido}}</th>
+            </tr>
+            <tr class="">
                 <th><strong>Email</strong></th>
                 <th>{{$user->email}}</th>
             </tr>
             <tr class="">
-                <th><strong>Password</strong></th>
-                <th>{{$user->password}}</th>
+                <th><strong>Codigo Sis</strong></th>
+                <th>{{$user->sis}}</th>
+            </tr>
+            <tr class="">
+                <th><strong>CI</strong></th>
+                <th>{{$user->ci}}</th>
             </tr>
             <tr class="">
                 <th><strong>Rol</strong></th>

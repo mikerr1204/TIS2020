@@ -26,10 +26,10 @@
 
         <section class="">
             <div class="d-flex flex-row">
-                <div class="w-25 mr-2 z-depth-1">
+                <div class="w-25">
                     @include('welcome.menu')
                 </div>
-                <div class="w-75 z-depth-1">
+                <div class="w-75 p-2 z-depth-1 e3f2fd blue lighten-5" style="position: relative; height: 500px; margin-top: .5rem; overflow: auto;">
                     @include('welcome.contenido')
                 </div>
             </div>

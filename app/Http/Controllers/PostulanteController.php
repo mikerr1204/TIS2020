@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Caffeinated\Shinobi\Models\Role;
 use App\User;
+use App\Postulation;
 
 class PostulanteController extends Controller
 {
@@ -22,6 +23,9 @@ class PostulanteController extends Controller
         $role = Role::where('name', '=', 'Postulante')->firstOrFail()->id;
         $user = new User();
         $user->name = $request->input('name');
+        $user->apellido = $request->input('apellido');
+        $user->sis = $request->input('sis');
+        $user->ci = $request->input('ci');
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('ci'));
         $user->save();

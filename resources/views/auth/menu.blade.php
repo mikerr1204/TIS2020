@@ -51,23 +51,49 @@
         </nav>
     @endcan
 
+    @can('users.index')
+        <a class="nav-link" data-toggle="collapse" data-target="#collapseConvoc" aria-expanded="true" aria-controls="collapseConvoc">
+            <strong>
+                <span class="text-left">
+                    <i class=" fas fa-user"></i> Convocatoria
+                </span>
+            </strong>
+        </a>
+        <nav class="nav nav-pills flex-column collapse" id="collapseConvoc">
+            @can('users.create')
+                <a class="nav-link ml-3 my-1 unique-color" href="{{ route('convocatorias.create') }}">
+                    <span class="text-left">
+                        <i class="fas fa-pen-alt "></i> Crear
+                    </span>
+                </a>
+            @endcan
+            @can('users.index')
+                <a class="nav-link ml-3 my-1 unique-color" href="{{ route('convocatorias.index') }}">
+                    <span class="text-left">
+                        <i class="fas fa-list-alt"></i> Listar
+                    </span>
+                </a>
+            @endcan
+        </nav>
+    @endcan
+
     @can('postulantes.index')
-        <a class="nav-link" data-toggle="collapse" data-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+        <a class="nav-link" data-toggle="collapse" data-target="#collapsePost" aria-expanded="true" aria-controls="collapsePost">
             <strong>
                 <span class="text-left">
                     <i class=" fas fa-user"></i> Postulante
                 </span>
             </strong>
         </a>
-        <nav class="nav nav-pills flex-column collapse" id="collapseOne3">
+        <nav class="nav nav-pills flex-column collapse" id="collapsePost">
             <a class="nav-link ml-3 my-1 unique-color" href="">
                 <span class="text-left">
-                    <i class="fas fa-pen-alt "></i> Precentar documentos
+                     Mis Notas
                 </span>
             </a>
-            <a class="nav-link ml-3 my-1 unique-color" href="">
+            <a class="nav-link ml-3 my-1 unique-color" href="{{ route('postulations.index') }}">
                 <span class="text-left">
-                    <i class="fas fa-list-alt"></i> notas
+                     Mis Postulaciones
                 </span>
             </a>
         </nav>

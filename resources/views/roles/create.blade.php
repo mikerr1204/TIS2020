@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-center primary-color">
-    <h5>Crear Rol</h5>
-</div>
+<h3>Crear Rol</h3>
 <div class="d-flex justify-content-center">
     <form action="{{ route('roles.store') }}" method="POST">
         {{ csrf_field() }}

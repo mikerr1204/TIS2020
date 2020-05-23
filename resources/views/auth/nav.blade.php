@@ -1,4 +1,4 @@
-<nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark unique-color-dark">
     <a class="navbar-brand" href="/">
         <img src="{{ asset('logo/logo.png') }}" width="35" height="35" class="img-fluid" alt="Responsive image">
          ActionSoft SRL
@@ -16,7 +16,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Convocatorias</a>
+              <a class="nav-link" href="/convoc">Convocatorias</a>
             </li>
             @if (Auth::guest())
                 <li class="nav-item">

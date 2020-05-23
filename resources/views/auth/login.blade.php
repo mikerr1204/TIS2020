@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-center primary-color">
-    <h5>Iniciar Sesion</h5>
-</div>
+<h3>Iniciar Sesion</h3>
 <div class="d-flex justify-content-center">
     <form class="text-center border-light p-2" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}

@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 Route::post('postulantes/store', 'PostulanteController@store')->name('postulantes.store');
-
 Route::get('postulantes/create', 'PostulanteController@create')->name('postulantes.create');
+Route::get('convoc', 'ConvocatoriaController@view')->name('convoc.view');
 
 
 Auth::routes();
@@ -69,7 +69,54 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
 		->middleware('permission:users.edit');
 
+	//Convocatorias
+	Route::post('convocatorias/store', 'ConvocatoriaController@store')->name('convocatorias.store')
+	->middleware('permission:convocatorias.create');
+
+	Route::get('convocatorias', 'ConvocatoriaController@index')->name('convocatorias.index')
+		->middleware('permission:convocatorias.index');
+
+	Route::get('convocatorias/create', 'ConvocatoriaController@create')->name('convocatorias.create')
+		->middleware('permission:convocatorias.create');
+
+	Route::put('convocatorias/{convocatoria}', 'ConvocatoriaController@update')->name('convocatorias.update')
+		->middleware('permission:convocatorias.edit');
+
+	Route::get('convocatorias/{convocatoria}', 'ConvocatoriaController@show')->name('convocatorias.show')
+		->middleware('permission:convocatorias.show');
+
+	Route::delete('convocatorias/{convocatoria}', 'ConvocatoriaController@destroy')->name('convocatorias.destroy')
+		->middleware('permission:convocatorias.destroy');
+
+	Route::get('convocatorias/{convocatoria}/edit', 'ConvocatoriaController@edit')->name('convocatorias.edit')
+		->middleware('permission:convocatorias.edit');
+
 	//Postulante
 	Route::get('postulantes/notas', 'PostulanteController@index')->name('postulantes.index')
 		->middleware('permission:postulantes.index');
+
+	//Postulation
+	Route::post('postulations/store', 'PostulationController@store')->name('postulations.store')
+	->middleware('permission:postulations.create');
+
+	Route::get('postulations', 'PostulationController@index')->name('postulations.index')
+		->middleware('permission:postulations.index');
+
+	Route::get('postulations/create', 'PostulationController@create')->name('postulations.create')
+		->middleware('permission:postulations.create');
+
+	Route::put('postulations/{postulation}', 'PostulationController@update')->name('postulations.update')
+		->middleware('permission:postulations.edit');
+
+	Route::get('postulations/{postulation}', 'PostulationController@show')->name('postulations.show')
+		->middleware('permission:postulations.show');
+
+	Route::delete('postulations/{postulation}', 'PostulationController@destroy')->name('postulations.destroy')
+		->middleware('permission:postulations.destroy');
+
+	Route::get('postulations/{postulation}/edit', 'PostulationController@edit')->name('postulations.edit')
+		->middleware('permission:postulations.edit');
+		
+	Route::get('postulations/apply/{id}', 'PostulationController@apply')->name('postulations.apply')
+	->middleware('permission:postulations.apply');
 });

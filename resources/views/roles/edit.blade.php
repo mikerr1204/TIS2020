@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="d-flex justify-content-center primary-color">
-    <h5>Editar Rol</h5>
-</div>
+<h3>Editar Rol</h3>
 <div class="d-flex justify-content-center">
     <form action="{{ route('roles.update', $role->id) }}" method="POST" class="text-center">
         {{ csrf_field() }}
@@ -11,13 +9,13 @@
         <div class="form-row">
             <div class="col">
                 <div class="md-form mb-1">
-                    <input type="text" pattern="[A-Za-z]{4,30}" id="materialRegisterFormName" class="form-control" aria-describedby="materialRegisterFormNameHelpBlock" name="name" value="{{$role->name}}" required autofocus>
+                    <input type="text" id="materialRegisterFormName" class="form-control" aria-describedby="materialRegisterFormNameHelpBlock" name="name" value="{{$role->name}}" required autofocus>
                     <label for="materialRegisterFormName">Nombre *</label>
                 </div>
             </div>
             <div class="col">
                 <div class="md-form mb-1">
-                    <input type="text" pattern="[A-Za-z ]{4,30}" id="materialRegisterFormNDescripción" class="form-control" aria-describedby="materialRegisterFormNDescripciónHelpBlock" name="description" value="{{$role->description}}" required autofocus>
+                    <input type="text" id="materialRegisterFormNDescripción" class="form-control" aria-describedby="materialRegisterFormNDescripciónHelpBlock" name="description" value="{{$role->description}}" required autofocus>
                     <label for="materialRegisterFormNDescripción">Descripción *</label>
                 </div>
             </div>
