@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Caffeinated\Shinobi\Models\Role;
 use App\User;
 use App\Postulation;
+use App\Formulario;
 
 class PostulanteController extends Controller
 {
@@ -36,7 +37,55 @@ class PostulanteController extends Controller
 
         return redirect('home');
     }
-    
+
+    public function storeConvocatoriaForm(Request $request)
+    {
+        $formulario = new Formulario();
+        if($request->hasFile('documentos')) {
+            $file_array = $request->file('documentos');
+            $file_size = count($file_array);
+            for($a = 0; $a<$file_size; $a++) {
+                $formulario->documentos = $request->input('documentos');
+            }
+        }
+        // else {
+        //     return back()->with('msg', 'Debe ingresar sus archivos de documentos')
+        // }
+
+        if($request->hasFile('meritos')) {
+            $file_array = $request->file('meritos');
+            $file_size = count($file_array);
+            for($a = 0; $a<$file_size; $a++) {
+                $formulario->meritos = $request->input('meritos');
+            }
+        }
+        // else {
+        //     return back()->with('msg', 'Debe ingresar sus archivos de meritos')
+        // }
+
+        if($request->hasFile('requisitos')) {
+            $file_array = $request->file('requisitos');
+            $file_size = count($file_array);
+            for($a = 0; $a<$file_size; $a++) {
+                $formulario->requisitos = $request->input('requisitos');
+            }
+        }
+        // else {
+        //     return back()->with('msg', 'Debe ingresar sus archivos de requisitos')
+        // }
+
+        $formulario->name = $request->input('nombre');
+        $formulario->carrera = $request->input('carrera');
+        $formulario->menciones = $request->input('menciones');
+        $formulario->requisitos = $request->input('requisitos');
+        $formulario->save();
+        return redirect('home');
+    }
+
+    public function getStoreConvocatoriaForm() {
+        return view('postulations/subscribe');
+    }
+
     protected function guard()
     {
         return Auth::guard();

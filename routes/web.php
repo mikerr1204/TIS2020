@@ -46,11 +46,11 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
-        
+
 	//Users
     Route::post('users/store', 'UserController@store')->name('users.store')
 		->middleware('permission:users.create');
-	
+
 	Route::get('users', 'UserController@index')->name('users.index')
 		->middleware('permission:users.index');
 
@@ -95,6 +95,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('postulantes/notas', 'PostulanteController@index')->name('postulantes.index')
 		->middleware('permission:postulantes.index');
 
+	Route::post('postulantes/convocatoria/subscribe', 'PostulanteController@storeConvocatoriaForm')->name('postulantes.convocatoria.subscribe');
+	Route::get('postulantes/convocatoria/subscribe', 'PostulanteController@getStoreConvocatoriaForm')->name('postulantes.convocatoria.subscribe.get');
+		// ->middleware('permission:postulantes.index');
+
 	//Postulation
 	Route::post('postulations/store', 'PostulationController@store')->name('postulations.store')
 	->middleware('permission:postulations.create');
@@ -116,7 +120,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('postulations/{postulation}/edit', 'PostulationController@edit')->name('postulations.edit')
 		->middleware('permission:postulations.edit');
-		
+
 	Route::get('postulations/apply/{id}', 'PostulationController@apply')->name('postulations.apply')
 	->middleware('permission:postulations.apply');
 });
