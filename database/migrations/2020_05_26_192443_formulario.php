@@ -15,23 +15,18 @@ class Formulario extends Migration
     {
         Schema::create('formulario', function (Blueprint $table) {
             $table->increments('id');
-
-            // $table->integer('formulario_id')->unsigned();
+            $table->integer('convocatoria_id')->unsigned();
             $table->string('nombre');
             $table->string('carrera');
             $table->string('documentos');
             $table->string('requisitos');
             $table->string('menciones');
+            $table->timestamps();
+
             $table->foreign('convocatoria_id')->references('id')->on('convocatorias')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->timestamps();
-
-            //relation
-            // $table->foreign('convocatoria_id')->references('id')->on('convocatorias')
-            // ->onDelete('cascade')
-            // ->onUpdate('cascade');
         });
     }
 

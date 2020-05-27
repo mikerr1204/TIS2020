@@ -81,6 +81,7 @@ class PostulanteController extends Controller
         $formulario->carrera = $request->input('carrera');
         $formulario->menciones = $request->input('menciones');
         $formulario->requisitos = $request->input('requisitos');
+        $formulario->convocatoria_id = $id;
         $formulario->save();
         return redirect('home');
     }
