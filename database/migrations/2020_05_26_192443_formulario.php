@@ -17,11 +17,11 @@ class Formulario extends Migration
             $table->increments('id');
 
             // $table->integer('formulario_id')->unsigned();
-            $table->string('nombre')->unsigned();
-            $table->string('carrera')->unsigned();
-            $table->string('documentos')->unsigned();
-            $table->string('requisitos')->unsigned();
-            $table->string('menciones')->unsigned();
+            $table->string('nombre');
+            $table->string('carrera');
+            $table->string('documentos');
+            $table->string('requisitos');
+            $table->string('menciones');
 
             $table->timestamps();
 

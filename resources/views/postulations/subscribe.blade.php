@@ -8,7 +8,7 @@
         <div class="form-row">
             <div class="col">
                 <div class="md-form mb-1">
-                    <input type="text" class="form-control" aria-describedby="nombre" name="nombreCompleto" value="{{ old('nombre') }}" required>
+                    <input type="text" id="nombreCompleto" class="form-control" aria-describedby="nombre" name="nombreCompleto" value="{{ old('nombre') }}" required>
                     <label for="nombreCompleto">Nombre completo *</label>
                 </div>
             </div>
@@ -16,8 +16,8 @@
         <div class="form-row">
             <div class="col">
                 <div class="md-form">
-                    <textarea type="text" class="form-control" name="carrera" value="{{ old('carrera') }}" required></textarea>
-                    <label for="message">Carrera *</label>
+                    <textarea type="text" id="carrera" class="form-control" name="carrera" value="{{ old('carrera') }}" required></textarea>
+                    <label for="carrera">Carrera *</label>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="col">
                 <div class="md-form mb-1">
                     <input type="file" class="form-control" id="documentos" name="documentos" required>
-                    <label for="documentos">Documentos a subir *</label>
+                    <label for="documentos">Documentos *</label>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="col">
                 <div class="md-form mb-1">
                     <input type="file" class="form-control" id="meritos" name="meritos" required>
-                    <label for="meritos">Meritos a subir *</label>
+                    <label for="meritos">Meritos *</label>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
             <div class="col">
                 <div class="md-form mb-1">
                     <input type="file" class="form-control" id="requisitos" name="requisitos" required>
-                    <label for="requisitos">Requisitos a subir *</label>
+                    <label for="requisitos">Requisitos *</label>
                 </div>
             </div>
         </div>
