@@ -95,8 +95,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('postulantes/notas', 'PostulanteController@index')->name('postulantes.index')
 		->middleware('permission:postulantes.index');
 
-	Route::post('postulantes/convocatoria/subscribe', 'PostulanteController@storeConvocatoriaForm')->name('postulantes.convocatoria.subscribe');
-	Route::get('postulantes/convocatoria/subscribe', 'PostulanteController@getStoreConvocatoriaForm')->name('postulantes.convocatoria.subscribe.get');
+	Route::get('convocatorias/{convocatoria}/formulario/registrar', 'PostulanteController@storeConvocatoriaForm')->name('postulantes.convocatoria.subscribe');
+	Route::get('convocatorias/{convocatoria}/formulario/registrar', 'PostulanteController@getStoreConvocatoriaForm')->name('postulantes.convocatoria.subscribe.get');
 		// ->middleware('permission:postulantes.index');
 
 	//Postulation

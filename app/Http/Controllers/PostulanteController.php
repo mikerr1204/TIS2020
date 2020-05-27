@@ -38,7 +38,7 @@ class PostulanteController extends Controller
         return redirect('home');
     }
 
-    public function storeConvocatoriaForm(Request $request)
+    public function storeConvocatoriaForm(Request $request, $id)
     {
         $formulario = new Formulario();
         if($request->hasFile('documentos')) {

@@ -22,6 +22,9 @@ class Formulario extends Migration
             $table->string('documentos');
             $table->string('requisitos');
             $table->string('menciones');
+            $table->foreign('convocatoria_id')->references('id')->on('convocatorias')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->timestamps();
 
