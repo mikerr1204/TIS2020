@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Editar Convocatoria</h3>
+<h3>Editar Formulario</h3>
 <div class="d-flex justify-content-center">
     <form action="{{ route('formularios.update', $formulario->id) }}" method="POST" class="text-center">
         {{ csrf_field() }}
