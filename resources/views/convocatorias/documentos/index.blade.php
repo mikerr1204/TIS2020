@@ -3,7 +3,7 @@
 @section('content')
 <h3>Listar Documentos</h3>
 <div class="d-flex justify-content-end" style="padding:0 10px 10px">
-    <form action="{{ route('documentos.show', $convocatoria->id) }}" method="GET">
+    <form action="{{ route('documentos.create'), 1 }}" method="GET">
         <button type="button" class="btn btn-success" type="submit">Agregar Documento</button>
     </form>
 </div>

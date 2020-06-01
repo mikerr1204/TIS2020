@@ -104,5 +104,32 @@ class PermissionsTableSeeder extends Seeder
             'slug'  => 'postulations.apply',
             'description'  => 'Se postula a la Postulacion del sistema',
         ]);
+
+        //Documentos
+        Permission::create([
+            'name'  => 'Ver Lista de Documentos',
+            'slug'  => 'documentos.index',
+            'description'  => 'Lista todos los documentos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Ver Perfil de Documentos',
+            'slug'  => 'documentos.show',
+            'description'  => 'Ver perfil todas los documentos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Crear Documentos',
+            'slug'  => 'documentos.create',
+            'description'  => 'Crear y Guardar documentos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Editar Documentos',
+            'slug'  => 'documentos.edit',
+            'description'  => 'Editar el documento de una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Eliminar Documentos',
+            'slug'  => 'documentos.destroy',
+            'description'  => 'Eliminar ldocumentos de una convocatoria',
+        ]);
     }
 }

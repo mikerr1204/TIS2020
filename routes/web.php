@@ -71,7 +71,7 @@ Route::middleware(['auth'])->group(function () {
 
 	//Convocatorias
 	Route::post('convocatorias/store', 'ConvocatoriaController@store')->name('convocatorias.store')
-	->middleware('permission:convocatorias.create');
+		->middleware('permission:convocatorias.create');
 
 	Route::get('convocatorias', 'ConvocatoriaController@index')->name('convocatorias.index')
 		->middleware('permission:convocatorias.index');
@@ -92,19 +92,26 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:convocatorias.edit');
 
 	//Documentos
-	Route::post('documentos/store', 'DocumentosController@store')->name('documentos.store');
+	Route::post('documentos/{convocatoria}/store', 'DocumentosController@store')->name('documentos.store')
+		->middleware('permission:documentos.create');
 
-	Route::get('documentos', 'DocumentosController@index')->name('documentos.index');
+	Route::get('documentos/{convocatoria}', 'DocumentosController@index')->name('documentos.index')
+		->middleware('permission:documentos.index');
 
-	Route::get('documentos/create', 'DocumentosController@create')->name('documentos.create');
+	Route::get('documentos/create', 'DocumentosController@create')->name('documentos.create')
+		->middleware('permission:documentos.create');
 
-	Route::put('documentos/{documentos}', 'DocumentosController@update')->name('documentos.update');
+	Route::put('documentos/{documentos}', 'DocumentosController@update')->name('documentos.update')
+		->middleware('permission:documentos.edit');
 
-	Route::get('documentos/{documentos}', 'DocumentosController@show')->name('documentos.show');
+	Route::get('documentos/{documentos}', 'DocumentosController@show')->name('documentos.show')
+		->middleware('permission:documentos.show');
 
-	Route::delete('documentos/{documentos}', 'DocumentosController@destroy')->name('documentos.destroy');
+	Route::delete('documentos/{documentos}', 'DocumentosController@destroy')->name('documentos.destroy')
+		->middleware('permission:documentos.destroy');
 
-	Route::get('documentos/{documentos}/edit', 'DocumentosController@edit')->name('documentos.edit');
+	Route::get('documentos/{documentos}/edit', 'DocumentosController@edit')->name('documentos.edit')
+		->middleware('permission:documentos.edit');
 
 	//Meritos
 	Route::post('meritos/store', 'MeritosController@store')->name('meritos.store');
