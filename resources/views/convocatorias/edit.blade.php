@@ -36,6 +36,14 @@
                 </div>
             </div>
         </div>
+        <div class="form-row">
+            <div class="col">
+                <div class="md-form">
+                    <textarea type="text" id="req" rows="3" class="form-control md-textarea" name="requisitos" value="{{$convocatoria->requisitos}}" required></textarea>
+                    <label for="req">Requisitos *</label>
+                </div>
+            </div>
+        </div>
         <button class="btn btn-primary waves-effect" type="submit" data-toggle="modal">Guardar Cambios</button>
     </form>
 </div>

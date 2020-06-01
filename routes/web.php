@@ -91,6 +91,36 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('convocatorias/{convocatoria}/edit', 'ConvocatoriaController@edit')->name('convocatorias.edit')
 		->middleware('permission:convocatorias.edit');
 
+	//Documentos
+	Route::post('documentos/store', 'DocumentosController@store')->name('documentos.store');
+
+	Route::get('documentos', 'DocumentosController@index')->name('documentos.index');
+
+	Route::get('documentos/create', 'DocumentosController@create')->name('documentos.create');
+
+	Route::put('documentos/{documentos}', 'DocumentosController@update')->name('documentos.update');
+
+	Route::get('documentos/{documentos}', 'DocumentosController@show')->name('documentos.show');
+
+	Route::delete('documentos/{documentos}', 'DocumentosController@destroy')->name('documentos.destroy');
+
+	Route::get('documentos/{documentos}/edit', 'DocumentosController@edit')->name('documentos.edit');
+
+	//Meritos
+	Route::post('meritos/store', 'MeritosController@store')->name('meritos.store');
+
+	Route::get('meritos', 'MeritosController@index')->name('meritos.index');
+
+	Route::get('meritos/create', 'MeritosController@create')->name('meritos.create');
+
+	Route::put('meritos/{meritos}', 'MeritosController@update')->name('meritos.update');
+
+	Route::get('meritos/{meritos}', 'MeritosController@show')->name('meritos.show');
+
+	Route::delete('meritos/{meritos}', 'MeritosController@destroy')->name('meritos.destroy');
+
+	Route::get('meritos/{meritos}/edit', 'MeritosController@edit')->name('meritos.edit');
+
 	//Postulante
 	Route::get('postulantes/notas', 'PostulanteController@index')->name('postulantes.index')
 		->middleware('permission:postulantes.index');

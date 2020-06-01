@@ -38,6 +38,12 @@ class ConvocatoriaController extends Controller
         return view('convocatorias.edit', compact('convocatoria'));
     }
 
+    public function details($id)
+    {
+        $convocatoria = Convocatoria::where('id', '=', $id)->firstOrFail();
+        return view('convocatorias.details', compact('convocatoria'));
+    }
+
     public function update(Request $request, $id)
     {
         $convocatoria = Convocatoria::find($id);

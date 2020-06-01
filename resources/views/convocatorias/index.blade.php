@@ -30,9 +30,6 @@
                         <strong>Eliminar</strong>
                     </th>
                 @endcan
-                    <th class="text-center">
-                        <strong>Inscribirse</strong>
-                    </th>
             </tr>
         </thead>
         <tbody>
