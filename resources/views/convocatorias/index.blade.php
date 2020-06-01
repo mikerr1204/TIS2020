@@ -64,11 +64,6 @@
                             </form>
                         </td>
                     @endcan
-                        <td class="text-center" width="10px">
-                            <form action="{{ route('postulantes.convocatoria.subscribe', $convocatoria->id) }}" method="GET">
-                                <button class="btn btn-warning px-3 btn-sm" type="submit"><i class="fas fa-edit"></i></button>
-                            </form>
-                        </td>
                 </tr>
             @endforeach
         </tbody>
