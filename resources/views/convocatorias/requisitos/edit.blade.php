@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Editar Merito</h3>
+<h3>Editar Requisito</h3>
 <div class="d-flex justify-content-center">
-    <form action="{{ route('meritos.update', $meritos->id) }}" method="POST" class="text-center">
+    <form action="{{ route('requisitos.update', $requisitos->id) }}" method="POST" class="text-center">
         {{ csrf_field() }}
         {{ @method_field('PUT') }}
         <div class="form-row">
             <div class="col">
                 <div class="md-form">
-                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="detalles" value="{{ $meritos->detalles }}" required></textarea>
+                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="detalles" value="{{ $requisitos->detalles }}" required></textarea>
                     <label for="message">Detalles *</label>
                 </div>
             </div>

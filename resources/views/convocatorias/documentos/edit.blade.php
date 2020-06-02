@@ -3,13 +3,13 @@
 @section('content')
 <h3>Editar Documento</h3>
 <div class="d-flex justify-content-center">
-    <form action="{{ route('documentos.update', $convocatoria->id) }}" method="POST" class="text-center">
+    <form action="{{ route('documentos.update', $documentos->id) }}" method="POST" class="text-center">
         {{ csrf_field() }}
         {{ @method_field('PUT') }}
         <div class="form-row">
             <div class="col">
                 <div class="md-form">
-                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="description" value="{{ old('description') }}" required></textarea>
+                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="detalles" value="{{ $documentos->detalles }}" required></textarea>
                     <label for="message">Detalles *</label>
                 </div>
             </div>

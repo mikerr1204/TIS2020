@@ -129,7 +129,61 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name'  => 'Eliminar Documentos',
             'slug'  => 'documentos.destroy',
-            'description'  => 'Eliminar ldocumentos de una convocatoria',
+            'description'  => 'Eliminar documentos de una convocatoria',
+        ]);
+
+        //Meritos
+        Permission::create([
+            'name'  => 'Ver Lista de Meritos',
+            'slug'  => 'meritos.index',
+            'description'  => 'Lista todos los meritos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Ver Perfil de Meritos',
+            'slug'  => 'meritos.show',
+            'description'  => 'Ver perfil de todos los meritos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Crear Meritos',
+            'slug'  => 'meritos.create',
+            'description'  => 'Crear y Guardar meritos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Editar meritos',
+            'slug'  => 'meritos.edit',
+            'description'  => 'Editar el merito de una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Eliminar Meritos',
+            'slug'  => 'meritos.destroy',
+            'description'  => 'Eliminar los meritos de una convocatoria',
+        ]);
+
+        //Requisitos
+        Permission::create([
+            'name'  => 'Ver Lista de Requisitos',
+            'slug'  => 'requisitos.index',
+            'description'  => 'Lista todos los requisitos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Ver Perfil de Requisitos',
+            'slug'  => 'requisitos.show',
+            'description'  => 'Ver perfil de todos los requisitos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Crear Requisitos',
+            'slug'  => 'requisitos.create',
+            'description'  => 'Crear y Guardar requisitos en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Editar Requisitos',
+            'slug'  => 'requisitos.edit',
+            'description'  => 'Editar el requisito de una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Eliminar Requisitos',
+            'slug'  => 'requisitos.destroy',
+            'description'  => 'Eliminar los requisitos de una convocatoria',
         ]);
     }
 }

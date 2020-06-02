@@ -25,6 +25,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group(function () {
+
 	//Roles
 	Route::post('roles/store', 'RoleController@store')->name('roles.store')
 		->middleware('permission:roles.create');
@@ -98,35 +99,64 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('documentos/{convocatoria}', 'DocumentosController@index')->name('documentos.index')
 		->middleware('permission:documentos.index');
 
-	Route::get('documentos/create', 'DocumentosController@create')->name('documentos.create')
+	Route::get('documentos/{convocatoria}/create', 'DocumentosController@create')->name('documentos.create')
 		->middleware('permission:documentos.create');
 
-	Route::put('documentos/{documentos}', 'DocumentosController@update')->name('documentos.update')
+	Route::put('documentos/{documentos}/update', 'DocumentosController@update')->name('documentos.update')
 		->middleware('permission:documentos.edit');
 
-	Route::get('documentos/{documentos}', 'DocumentosController@show')->name('documentos.show')
+	Route::get('documentos/{documentos}/show', 'DocumentosController@show')->name('documentos.show')
 		->middleware('permission:documentos.show');
 
-	Route::delete('documentos/{documentos}', 'DocumentosController@destroy')->name('documentos.destroy')
+	Route::delete('documentos/{documentos}/destroy', 'DocumentosController@destroy')->name('documentos.destroy')
 		->middleware('permission:documentos.destroy');
 
 	Route::get('documentos/{documentos}/edit', 'DocumentosController@edit')->name('documentos.edit')
 		->middleware('permission:documentos.edit');
 
 	//Meritos
-	Route::post('meritos/store', 'MeritosController@store')->name('meritos.store');
+	Route::post('meritos/{convocatoria}/store', 'MeritosController@store')->name('meritos.store')
+		->middleware('permission:meritos.create');
 
-	Route::get('meritos', 'MeritosController@index')->name('meritos.index');
+	Route::get('meritos/{convocatoria}', 'MeritosController@index')->name('meritos.index')
+		->middleware('permission:meritos.index');
 
-	Route::get('meritos/create', 'MeritosController@create')->name('meritos.create');
+	Route::get('meritos/{convocatoria}/create', 'MeritosController@create')->name('meritos.create')
+		->middleware('permission:meritos.create');
 
-	Route::put('meritos/{meritos}', 'MeritosController@update')->name('meritos.update');
+	Route::put('meritos/{meritos}/update', 'MeritosController@update')->name('meritos.update')
+		->middleware('permission:meritos.edit');
 
-	Route::get('meritos/{meritos}', 'MeritosController@show')->name('meritos.show');
+	Route::get('meritos/{meritos}/show', 'MeritosController@show')->name('meritos.show')
+		->middleware('permission:meritos.show');
 
-	Route::delete('meritos/{meritos}', 'MeritosController@destroy')->name('meritos.destroy');
+	Route::delete('meritos/{meritos}/destroy', 'MeritosController@destroy')->name('meritos.destroy')
+		->middleware('permission:meritos.destroy');
 
-	Route::get('meritos/{meritos}/edit', 'MeritosController@edit')->name('meritos.edit');
+	Route::get('meritos/{meritos}/edit', 'MeritosController@edit')->name('meritos.edit')
+		->middleware('permission:meritos.edit');
+
+	//Requisitos
+	Route::post('requisitos/{convocatoria}/store', 'RequisitosController@store')->name('requisitos.store')
+		->middleware('permission:requisitos.create');
+
+	Route::get('requisitos/{convocatoria}', 'RequisitosController@index')->name('requisitos.index')
+		->middleware('permission:requisitos.index');
+
+	Route::get('requisitos/{convocatoria}/create', 'RequisitosController@create')->name('requisitos.create')
+		->middleware('permission:requisitos.create');
+
+	Route::put('requisitos/{requisitos}/update', 'RequisitosController@update')->name('requisitos.update')
+		->middleware('permission:requisitos.edit');
+
+	Route::get('requisitos/{requisitos}/show', 'RequisitosController@show')->name('requisitos.show')
+		->middleware('permission:requisitos.show');
+
+	Route::delete('requisitos/{requisitos}/destroy', 'RequisitosController@destroy')->name('requisitos.destroy')
+		->middleware('permission:requisitos.destroy');
+
+	Route::get('requisitos/{requisitos}/edit', 'RequisitosController@edit')->name('requisitos.edit')
+		->middleware('permission:requisitos.edit');
 
 	//Postulante
 	Route::get('postulantes/notas', 'PostulanteController@index')->name('postulantes.index')

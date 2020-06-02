@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Listar Documentos</h3>
+<h3>Listar Requisitos</h3>
 <div class="d-flex justify-content-end" style="padding:0 10px 10px">
-    <a href="{{ route('documentos.create', $convocatoria_id) }}">
+    <a href="{{ route('requisitos.create', $convocatoria_id) }}">
         <button type="button" class="btn btn-success" type="submit">
-            Agregar Documento
+            Agregar Requisito
         </button>
     </a>
 </div>
@@ -32,22 +32,22 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($documentos as $documento)
+            @foreach ($requisitos as $requisito)
                 <tr>
-                    <td>{{$documento->detalles}}</td>
-                    <td>{{$documento->obligatorio}}</td>
+                    <td>{{$requisito->detalles}}</td>
+                    <td>{{$requisito->obligatorio}}</td>
                         <td class="text-center" width="10px">
-                            <form action="{{ route('documentos.show', $documento->id) }}" method="GET">
+                            <form action="{{ route('requisitos.show', $requisito->id) }}" method="GET">
                                 <button class="btn btn-info px-3 btn-sm" type="submit"><i class="fas fa-eye"></i></button>
                             </form>
                         </td>
                         <td class="text-center" width="10px">
-                            <form action="{{ route('documentos.edit', $documento->id) }}" method="GET">
+                            <form action="{{ route('requisitos.edit', $requisito->id) }}" method="GET">
                                 <button class="btn btn-warning px-3 btn-sm" type="submit"><i class="fas fa-edit"></i></button>
                             </form>
                         </td>
                         <td class="text-center" width="10px">
-                            <form action="{{ route('documentos.destroy', $documento->id) }}" method="POST">
+                            <form action="{{ route('requisitos.destroy', $requisito->id) }}" method="POST">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="_method" value="DELETE">
                                 <button class="btn btn-danger px-3 btn-sm" type="button" onclick="if(confirm('Deseas continuar?')){ this.form.submit();}"><i class="fas fa-trash-alt"></i></button>

@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Editar Merito</h3>
+<h3>Crear Requisito</h3>
 <div class="d-flex justify-content-center">
-    <form action="{{ route('meritos.update', $meritos->id) }}" method="POST" class="text-center">
+    <form action="{{ route('requisitos.store', $convocatoria_id) }}" method="POST">
         {{ csrf_field() }}
-        {{ @method_field('PUT') }}
         <div class="form-row">
             <div class="col">
                 <div class="md-form">
-                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="detalles" value="{{ $meritos->detalles }}" required></textarea>
+                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="detalles" value="{{ old('detalles') }}" required></textarea>
                     <label for="message">Detalles *</label>
                 </div>
             </div>
@@ -27,7 +26,9 @@
                 </label>
             </div>
         </div>
-        <button class="btn btn-primary waves-effect" type="submit" data-toggle="modal">Guardar Cambios</button>
+        <div class="text-center">
+            <button class="btn btn-primary waves-effect" type="submit" data-toggle="modal">Registrar</button>
+        </div>
     </form>
 </div>
 @endsection

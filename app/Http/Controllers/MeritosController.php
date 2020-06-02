@@ -7,26 +7,30 @@ use Illuminate\Http\Request;
 
 class MeritosController extends Controller
 {
-    public function index($id)
+    public function index($convocatoria_id)
     {
-        $meritos = Meritos::where('convocatoria_id', '=', $id);
+        $meritos = Meritos::where('convocatoria_id', $convocatoria_id)->get();
         // $meritos = Meritos::orderBy('detalles')->get();
-        return view('convocatorias.meritos.index', compact('meritos'));
+        return view('convocatorias.meritos.index', compact('meritos', 'convocatoria_id'));
     }
 
-    public function create()
+    public function create($convocatoria_id)
     {
-        return view('convocatorias.meritos.create');
+        return view('convocatorias.meritos.create', compact('convocatoria_id'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $convocatoria_id)
     {
         $meritos = new Meritos();
         $meritos->detalles = $request->input('detalles');
+        $meritos->cabezal = 'Prueba';
+        $meritos->nivel = 'Prueba';
+        $meritos->subnivel = 'Prueba';
+        $meritos->convocatoria_id = $convocatoria_id;
         $meritos->obligatorio = $request->input('obligatorio');
         $meritos->save();
 
-        return redirect('meritos');
+        return redirect()->route('meritos.index', ['convocatoria_id' => $convocatoria_id]);
     }
 
     public function show($id)
@@ -41,24 +45,17 @@ class MeritosController extends Controller
         return view('convocatorias.meritos.edit', compact('meritos'));
     }
 
-    public function details($id)
-    {
-        $meritos = Meritos::where('id', '=', $id)->firstOrFail();
-        return view('convocatoria.meritos.details', compact('meritos'));
-    }
-
     public function update(Request $request, $id)
     {
         $meritos = Meritos::find($id);
 
+        $convocatoria_id = $meritos->convocatoria_id;
+
         $meritos->detalles = $request->input('detalles');
         $meritos->obligatorio = $request->input('obligatorio');
-        // $meritos->cabezal = $request->input('obligatorio');
-        // $meritos->nivel = $request->input('obligatorio');
-        // $meritos->subnivel = $request->input('obligatorio');
         $meritos->save();
 
-        return redirect('meritos');
+        return redirect()->route('meritos.index', ['convocatoria_id' => $convocatoria_id]);
     }
 
     public function destroy($id)

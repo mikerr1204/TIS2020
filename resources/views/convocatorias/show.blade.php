@@ -1,23 +1,69 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Detalles de Convocatoria</h3>
+<h2>Detalles de Convocatoria</h2>
+
 <div class="d-flex justify-content-center">
+
     @can('documentos.show')
-    <form action="{{ route('documentos.index', $convocatoria->id) }}" method="GET">
-        <button type="button" class="btn btn-primary" type="submit">Documentos</button>
-    </form>
+    <a href="{{ route('documentos.index', $convocatoria->id) }}">
+        <button type="button" class="btn btn-primary" type="submit">
+            Documentos
+        </button>
+    </a>
     @endcan
-    <form action="{{ route('meritos.index', $convocatoria->id) }}" method="GET">
-        <button type="button" class="btn btn-info" type="submit">Meritos</button>
-    </form>
-    <button type="button" class="btn btn-secondary" type="submit">Requisitos</button>
+
+    @can('meritos.show')
+        <a href="{{ route('meritos.index', $convocatoria->id) }}">
+            <button type="button" class="btn btn-info" type="submit">
+                Meritos
+            </button>
+        </a>
+    @endcan
+
+    @can('requisitos.show')
+        <a href="{{ route('requisitos.index', $convocatoria->id) }}">
+            <button type="button" class="btn btn-secondary" type="submit">
+                Requisitos
+            </button>
+        </a>
+    @endcan
+
 </div>
-<div class="d-flex justify-content-center">
-    <article class="article p-4 m-4 z-depth-1">
-        <h2 class="article__title">{{ $convocatoria->titulo }}</h2>
-        <div class="article__date">{{ $convocatoria->fechaIni }} - {{ $convocatoria->fechaFin }}</div>
-        <div class="article__content">{{ $convocatoria->description }}</div>
-    </article>
+
+<div class="container">
+    <br>
+
+    <h3 style="text-align: center">{{ $convocatoria->titulo }}</h3>
+    <p><strong>Descripcion: </strong>{{ $convocatoria->description }}</p>
+
+    <h3>Requisitos</h3>
+    <p>Para poder participar en esta convocatoria, usted debe tener:</p>
+    <ul>
+        @foreach ($requisitos as $requisito)
+            <li>{{ $requisito->detalles }}</li>
+        @endforeach
+    </ul>
+    <br>
+
+    <h3>Documentos</h3>
+    <p>Para poder participar en esta convocatoria, usted debe presentar:</p>
+    <ul>
+        @foreach ($documentos as $documento)
+            <li>{{ $documento->detalles }}</li>
+        @endforeach
+    </ul>
+    <br>
+
+    <h3>Meritos</h3>
+    <p>Opcionalmente, usted puede presentar:</p>
+    <ul>
+        @foreach ($meritos as $merito)
+            <li>{{ $merito->detalles }}</li>
+        @endforeach
+    </ul>
+    <br>
+
 </div>
+
 @endsection

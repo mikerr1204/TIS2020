@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Convocatoria;
+use App\Documentos;
+use App\Requisitos;
+use App\Meritos;
+
 use Illuminate\Http\Request;
 
 class ConvocatoriaController extends Controller
@@ -29,7 +33,11 @@ class ConvocatoriaController extends Controller
     public function show($id)
     {
         $convocatoria = Convocatoria::where('id', '=', $id)->firstOrFail();
-        return view('convocatorias.show', compact('convocatoria'));
+        $documentos = Documentos::where('convocatoria_id', $id)->get();
+        $meritos = Meritos::where('convocatoria_id', $id)->get();
+        $requisitos = Requisitos::where('convocatoria_id', $id)->get();
+        return view('convocatorias.show',
+            compact('convocatoria', 'documentos', 'meritos', 'requisitos'));
     }
 
     public function edit($id)

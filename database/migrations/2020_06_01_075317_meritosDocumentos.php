@@ -45,6 +45,21 @@ class MeritosDocumentos extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
+
+        Schema::create('requisitos', function (Blueprint $table) {
+            $table->increments('id');
+
+            $table->integer('convocatoria_id')->unsigned();
+            $table->string('obligatorio');
+            $table->string('detalles');
+
+            $table->timestamps();
+
+            //relation
+            $table->foreign('convocatoria_id')->references('id')->on('convocatorias')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
     }
 
     /**
@@ -56,5 +71,6 @@ class MeritosDocumentos extends Migration
     {
         Schema::dropIfExists('documentos');
         Schema::dropIfExists('meritos');
+        Schema::dropIfExists('requisitos');
     }
 }

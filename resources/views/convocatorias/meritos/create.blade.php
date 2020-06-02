@@ -3,12 +3,12 @@
 @section('content')
 <h3>Crear Merito</h3>
 <div class="d-flex justify-content-center">
-    <form action="{{ route('meritos.store') }}" method="POST">
+    <form action="{{ route('meritos.store', $convocatoria_id) }}" method="POST">
         {{ csrf_field() }}
         <div class="form-row">
             <div class="col">
                 <div class="md-form">
-                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="description" value="{{ old('description') }}" required></textarea>
+                    <textarea type="text" id="message" rows="2" class="form-control md-textarea" name="detalles" value="{{ old('detalles') }}" required></textarea>
                     <label for="message">Detalles *</label>
                 </div>
             </div>
