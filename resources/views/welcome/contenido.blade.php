@@ -1,5 +1,5 @@
 <h3>Bienvenido al sistema de convocatorias</h3>
-<div data-spy="scroll" class="scrollspy-example pl-5 pr-5 pt-2 text-dark" data-target="#navbar-example3" data-offset="0">
+<div class="pl-5 pr-5 pt-2 text-dark" style="position: relative; height: 480px; margin-top: .5rem; overflow: auto;">
     <h4 id="item-1">Reseña Histórica</h4>
     <div class="text-center pt-1">
         <a><i class="fas fa-book-open fa-7x"></i></a>

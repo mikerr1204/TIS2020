@@ -13,6 +13,9 @@
         </h4>
     </div>
     <div class="">
+        @include('opcion.error')
+        @include('opcion.validacion')
+        @include('opcion.confirmacion')
         <p>
             Bienvenido a la plataforma de control de laboratorio.
         </p>

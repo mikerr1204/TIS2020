@@ -27,18 +27,16 @@
             @include('auth.nav')
         </header>
 
-        <section class="">
-            <div class="d-flex flex-row">
-                <div class="w-25">
-                    @if (Auth::check())
-                        @include('auth.menu')
-                    @else
-                        @include('welcome.menu')
-                    @endif
-                </div>
-                <div class="w-75 p-2 z-depth-1 e3f2fd blue lighten-5" style="position: relative; height: 500px; margin-top: .5rem; overflow: auto;">
-                    @yield('content')
-                </div>
+        <section class="row m-0">
+            <div class="col-sm-3 col-lg-2 p-0">
+                @if (Auth::check())
+                    @include('auth.menu')
+                @else
+                    @include('welcome.menu')
+                @endif
+            </div>
+            <div class="col-sm-9 col-lg-10 p-0 pl-2 pt-2">
+                @yield('content')
             </div>
         </section>
 

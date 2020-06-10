@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Convocatoria;
+use App\Materia;
+use App\Postulation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ConvocatoriaRequest;
 
 class ConvocatoriaController extends Controller
 {
@@ -16,7 +20,7 @@ class ConvocatoriaController extends Controller
     {
         return view('convocatorias.create');
     }
-    public function store(Request $request)
+    public function store(ConvocatoriaRequest $request)
     {
         $convocatoria = new Convocatoria();
         $convocatoria->titulo = $request->input('titulo');
@@ -24,12 +28,18 @@ class ConvocatoriaController extends Controller
         $convocatoria->fechaIni = $request->input('fechaIni');
         $convocatoria->fechaFin = $request->input('fechaFin');
         $convocatoria->save();
-        return redirect('convocatorias');
+        return redirect('convocatorias')->with('confirmacion','Convocatoria Registrado Correctamente');
     }
     public function show($id)
     {
         $convocatoria = Convocatoria::where('id', '=', $id)->firstOrFail();
-        return view('convocatorias.show', compact('convocatoria'));
+        $requerimientos= $convocatoria->requerimientos;
+        $requisitos= $convocatoria->requisitos;
+        $documentos= $convocatoria->documentos;
+        $fechas= $convocatoria->fechas;
+        $meritos= $convocatoria->meritos;
+        $materias = Materia::get();
+        return view('convocatorias.show', compact('convocatoria', 'requerimientos', 'materias', 'requisitos', 'documentos', 'fechas', 'meritos'));
     }
 
     public function edit($id)
@@ -38,7 +48,7 @@ class ConvocatoriaController extends Controller
         return view('convocatorias.edit', compact('convocatoria'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ConvocatoriaRequest $request, $id)
     {
         $convocatoria = Convocatoria::find($id);
 
@@ -48,20 +58,33 @@ class ConvocatoriaController extends Controller
         $convocatoria->fechaFin = $request->input('fechaFin');
         $convocatoria->save();
 
-        return redirect('convocatorias');
+        return redirect('convocatorias')->with('confirmacion','Convocatoria Editado Correctamente');
     }
 
     public function destroy($id)
     {
         $convocatoria = Convocatoria::where('id', '=', $id)->firstOrFail();
         $convocatoria->delete();
-        return back();
+        return back()->with('confirmacion','Convocatoria Eliminado Corectamente');
     }
 
 
     public function view()
     {
         $convocatorias = Convocatoria::orderBy('titulo')->get();
-        return view('convocatorias.publico..index', compact('convocatorias'));
+        return view('convocatorias.publico.index', compact('convocatorias'));
+    }
+    public function viewshow($id)
+    {
+        // $user = Auth::user();
+        $convocatoria = Convocatoria::where('id', '=', $id)->firstOrFail();
+        // $postulation = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$convocatoria->id)->firstOrFail();
+        $requerimientos= $convocatoria->requerimientos;
+        $requisitos= $convocatoria->requisitos;
+        $documentos= $convocatoria->documentos;
+        $fechas= $convocatoria->fechas;
+        $meritos= $convocatoria->meritos;
+        $materias = Materia::get();
+        return view('convocatorias.publico.show', compact('convocatoria', 'requerimientos', 'materias', 'requisitos', 'documentos', 'fechas', 'meritos'));
     }
 }

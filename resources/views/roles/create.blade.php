@@ -1,25 +1,27 @@
-@extends('layouts.app')
-
-@section('content')
-<h3>Crear Rol</h3>
-<div class="d-flex justify-content-center">
+<div class="modal-header text-center">
+    <h4 class="modal-title w-100 font-weight-bold">Crear Rol</h4>
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body mx-3">
     <form action="{{ route('roles.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-row">
             <div class="col">
-                <div class="md-form mb-1">
+                <div class="md-form">
                     <input type="text"  id="materialRegisterFormName" class="form-control" aria-describedby="materialRegisterFormNameHelpBlock" name="name" value="{{ old('name') }}" required>
                     <label for="materialRegisterFormName">Nombre *</label>
                 </div>
             </div>
             <div class="col">
-                <div class="md-form mb-1">
+                <div class="md-form">
                     <input type="text"  id="materialRegisterFormNDescripción" class="form-control" aria-describedby="materialRegisterFormNDescripciónHelpBlock" name="description" value="{{ old('description') }}" required>
                     <label for="materialRegisterFormNDescripción">Descripción *</label>
                 </div>
             </div>
         </div>
-        <div class="text-center pt-3">
+        <div class="text-center">
             <label><strong>Asignar permisos</strong></label>
         </div>
         <div class="form-row">
@@ -30,7 +32,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center pt-3">
+        <div class="text-center">
             <label><strong>Asignar permisos especiales</strong></label>
         </div>
         <div class="d-flex justify-content-center">
@@ -48,4 +50,3 @@
         </div>
     </form>
 </div>
-@endsection

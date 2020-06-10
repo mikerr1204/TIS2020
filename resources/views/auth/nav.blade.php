@@ -20,7 +20,7 @@
             </li>
             @if (Auth::guest())
                 <li class="nav-item">
-                <a class="nav-link" href="/postulantes/create">Registro de Postulantes</a>
+                    <a class="nav-link" href="/postulantes/create">Registro de Postulantes</a>
                 </li>
             @endif
         </ul>

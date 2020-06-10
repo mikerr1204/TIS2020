@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Detalles de Usuario</h3>
-<div class="d-flex justify-content-center">
-    <table class="table table-bordered mt-3">
+<div class="row m-0">
+    <div class="col">
+        <h3>Detalles de Usuario</h3>
+    </div>
+</div>
+<div style="position: relative; height: 450px; margin-top: .5rem; overflow: auto;">
+    <table class="table table-sm table-hover table-bordered">
         <tbody>
             <tr class="">
                 <th><strong>Nombre</strong></th>
@@ -35,6 +39,5 @@
             </tr>
         </tbody>
     </table>
-</div>
 </div>
 @endsection

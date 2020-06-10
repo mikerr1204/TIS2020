@@ -14,4 +14,14 @@ class Postulation extends Model
     {
         return $this->belongsTo(Convocatoria::class);
     }
+
+    public function archivos()
+    {
+        return $this->hasMany(Archivo::class);
+    }
+
+    public function certificados()
+    {
+        return $this->hasMany(Certificado::class);
+    }
 }

@@ -5,22 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Role;
 use Caffeinated\Shinobi\Models\Permission;
+use App\Http\Requests\RoleRequest;
 
 class RoleController extends Controller
 {
     public function index()
     {
+        $permissions = Permission::get();
         $roles = Role::orderBy('name')->get();
-        return view('roles.index', compact('roles'));
+        return view('roles.index', compact('roles', 'permissions'));
     }
 
     public function create()
     {
-        $permissions = Permission::get();
         return view('roles.create', compact('permissions'));
     }
 
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
         $role = new Role();
         $role->name = $request->input('name');
@@ -31,7 +32,7 @@ class RoleController extends Controller
 
         $role->permissions()->attach($request->get('permissions'));
 
-        return redirect('roles');
+        return redirect('roles')->with('confirmacion','Rol Registrado Correctamente');
     }
 
     public function show($slug)
@@ -59,13 +60,13 @@ class RoleController extends Controller
 
         $role->permissions()->sync($request->get('permissions'));
 
-        return redirect('roles');
+        return redirect('roles')->with('confirmacion','Rol Editado Corectamente');
     }
 
     public function destroy($slug)
     {
         $role = Role::where('slug', '=', $slug)->firstOrFail();
         $role->delete();
-        return back();
+        return back()->with('confirmacion','Rol Eliminado Corectamente');
     }
 }

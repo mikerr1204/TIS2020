@@ -15,7 +15,6 @@ class CreatePostulationsTable extends Migration
     {
         Schema::create('postulations', function (Blueprint $table) {
             $table->increments('id');
-            
             $table->integer('convocatoria_id')->unsigned();
             $table->integer('user_id')->unsigned();
 

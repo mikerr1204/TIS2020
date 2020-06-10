@@ -1,9 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>Lista de Roles</h3>
-<div class="d-flex justify-content-center">
-    <table class="table table-sm table-hover">
+<div class="row m-0">
+    <div class="col">
+        <h3>Lista de Roles</h3>
+    </div>
+    @can('roles.create')
+        <div class="col">
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#modalLoginForm">Nuevo</button>
+            </div>
+        </div>
+    @endcan
+</div>
+<div style="position: relative; height: 480px; margin-top: .5rem; overflow: auto;">
+    @include('opcion.error')
+    @include('opcion.validacion')
+    @include('opcion.confirmacion')
+    <table class="table table-sm table-hover table-bordered">
         <thead class="thead-light">
             <tr>
                 <th>
@@ -61,5 +75,14 @@
             @endforeach
         </tbody>
     </table>
+</div>
+
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            @include('roles.create')
+        </div>
+    </div>
 </div>
 @endsection

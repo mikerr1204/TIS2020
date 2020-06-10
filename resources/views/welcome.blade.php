@@ -23,15 +23,14 @@
         <header class="default-color">
             @include('welcome.nav')
         </header>
-
-        <section class="">
-            <div class="d-flex flex-row">
-                <div class="w-25">
-                    @include('welcome.menu')
-                </div>
-                <div class="w-75 p-2 z-depth-1 e3f2fd blue lighten-5" style="position: relative; height: 500px; margin-top: .5rem; overflow: auto;">
-                    @include('welcome.contenido')
-                </div>
+        
+        <section class="row m-0">
+            <div class="col-sm-3 col-lg-2 p-0">
+                @include('welcome.menu')
+            </div>
+        
+            <div class="col-sm-9 col-lg-10 p-0 pl-2 pt-2">
+                @include('welcome.contenido')
             </div>
         </section>
     

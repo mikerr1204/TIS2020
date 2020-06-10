@@ -1,25 +1,27 @@
 @extends('layouts.app')
 
 @section('content')
-<h3>Detalles de Rol</h3>
-<div class="d-flex justify-content-center">
-    <table class="table table-bordered">
-        <thead class="">
+<div class="row m-0">
+    <div class="col">
+        <h3>Detalles de Rol</h3>
+    </div>
+</div>
+<div style="position: relative; height: 450px; margin-top: .5rem; overflow: auto;">
+    <table class="table table-sm table-hover table-bordered">
+        <tbody>
             <tr>
                 <th><strong>Código</strong></th>
                 <td>{{$role->id}}</td>
             </tr>
-        </thead>
-        <tbody>
-            <tr class="">
+            <tr>
                 <th><strong>Nombre</strong></th>
                 <td>{{$role->name}}</td>
             </tr>
-            <tr class="">
+            <tr>
                 <th><strong>Descripción</strong></th>
                 <td>{{$role->description}}</td>
             </tr>
-            <tr class="">
+            <tr>
                 <th><strong>Acceso</strong></th>
                 <td>
                     @if ($role->special == null)
@@ -35,7 +37,7 @@
                     @endif
                 </td>
             </tr>
-            <tr class="">
+            <tr>
                 <th><strong>Pribilegios</strong></th>
                 <td>
                     @foreach ($role->permissions as $permission)

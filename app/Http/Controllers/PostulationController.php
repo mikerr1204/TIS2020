@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Caffeinated\Shinobi\Models\Role;
 use App\Postulation;
+use App\Convocatoria;
+use App\Codigo;
 use Illuminate\Http\Request;
 
 class PostulationController extends Controller
@@ -22,12 +25,31 @@ class PostulationController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $user = Auth::user();
+        $cont = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$request->convocatoria_id)->count();
+        $rol = $user->roles->where('name','=','Postulante')->count();
+        
+        if ($rol == 1) {
+            if ($cont == 0) {
+                $postulation = new Postulation();
+                $postulation->convocatoria_id = $request->convocatoria_id;
+                $postulation->user_id = $user->id;
+                $postulation->save();
+                return redirect('convoc')->with('confirmacion','Postulacion Exitosa');
+            } else {
+                return back()->with('negacion','Ya te postulaste a esta convocatoria');
+            }
+        } else {
+            return back()->with('negacion','Solo para postulantes');
+        }
     }
 
-    public function show(Postulation $postulation)
+    public function show($id)
     {
-        //
+        $postulation = Postulation::where('id', '=', $id)->firstOrFail();
+        $convocatoria = $postulation->convocatoria;
+        $archivos = $postulation->archivos;
+        return view('postulations.show', compact('postulation', 'convocatoria', 'archivos'));
     }
 
     public function edit(Postulation $postulation)
@@ -47,15 +69,7 @@ class PostulationController extends Controller
 
     public function apply($id)
     {
-        $user = Auth::user();
-
-        $postulation = new Postulation();
-        $postulation->convocatoria_id = $id;
-        $postulation->user_id = $user->id;
-        $postulation->save();
-
-        // return redirect('roles');
-        
-        return back();
+        $convocatoria = Convocatoria::where('id', '=', $id)->firstOrFail();
+        return view('postulations.create', compact('convocatoria'));
     }
 }
