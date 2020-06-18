@@ -20,6 +20,7 @@ class CreateCertificadosTable extends Migration
 
             $table->integer('merito_id')->unsigned();
             $table->integer('postulation_id')->unsigned();
+            $table->integer('puntaje')->unsigned();
             $table->timestamps();
 
             //relation

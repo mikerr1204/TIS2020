@@ -27,6 +27,18 @@
         </div>
         <div class="form-row">
             <div class="col">
+                <label for="tipo">Tipo de merito:</label>
+                <select id="tipo" name="tipo">
+                    <option value="docente">Auxiliar docente.</option>
+                    <option value="auxiliar">Auxiliar comun.</option>
+                    <option value="interno">Certificado interno universitario</option>
+                    <option value="externo">Certificado externo</option>
+                    <option value="externo">Certificado externo</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
