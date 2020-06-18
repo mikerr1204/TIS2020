@@ -20,7 +20,7 @@
             </li>
             @if (Auth::guest())
                 <li class="nav-item">
-                <a class="nav-link" href="/postulantes/create">Registro de Postulantes</a>
+                    <a class="nav-link" href="/postulantes/create">Registro de Postulantes</a>
                 </li>
             @endif
         </ul>
@@ -39,7 +39,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user"></i> Profile 
+                        <i class="fas fa-user"></i> Profile
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
                         <a class="dropdown-item" href="/home">
@@ -62,7 +62,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <i class="fab fa-instagram"></i> 
+                        <i class="fab fa-instagram"></i>
                     </a>
                 </li>
                 <li class="nav-item">
