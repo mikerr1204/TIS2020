@@ -14,7 +14,7 @@ class CertificadoController extends Controller
 {
     public function index()
     {
-        //
+
     }
 
     public function create()
@@ -40,7 +40,7 @@ class CertificadoController extends Controller
                 $certificado->postulation_id=$postulation->id;
 
                 if($request->file('file')){
-                    $path = Storage::disk('public')->put('meritos',  $request->file('file'));
+                    $path = Storage::disk('public')->put('meritosA',  $request->file('file'));
                     $certificado->fill(['file' => asset($path)])->save();
                 }
                 $certificado->save();
@@ -67,19 +67,32 @@ class CertificadoController extends Controller
         return $puntaje;
     }
 
-    public function show(Certificado $certificado)
+    public function showCertificados($merito_id)
     {
-        //
+        $certificados = Certificado::where('merito_id', '=', $merito_id)->get();
+        return view('certificados.index', compact('certificados'));
     }
 
-    public function edit(Certificado $certificado)
+    public function edit($id)
     {
-        //
+        $certificado = Certificado::where('id', '=', $id)->firstOrFail();
+        return view('certificados.edit', compact('certificado'));
     }
 
-    public function update(Request $request, Certificado $certificado)
+    public function update(Request $request, $id)
     {
-        //
+        $certificado = Certificado::find($id);
+
+        $certificado->puntaje = $request->input('puntaje');;
+        $certificado->save();
+
+        return redirect('meritos')->with('confirmacion','Puntaje Cambiado Correctamente');
+    }
+
+    public function download($id) {
+        $certificado = Certificado::find($id)->firstOrFail();
+        $file = strrchr($certificado->file, '/');
+        return  response()->download(public_path('meritosA'.$file));
     }
 
     public function destroy($id)

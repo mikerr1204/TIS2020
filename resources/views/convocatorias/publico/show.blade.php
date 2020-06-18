@@ -7,10 +7,6 @@
     </div>
     <div class="col">
         <div class="d-flex justify-content-end">
-            @can('comisionario.view')
-                <a href="convocatorias/{$convocatoria->id}/certificados">
-                <button type="button" class="btn btn-success btn-sm">Ver Meritos</button>
-            @endcan
             @can('postulations.create')
                 <button type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#modalPostulForm">Postularme</button>
             @endcan

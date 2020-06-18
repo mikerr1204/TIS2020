@@ -65,13 +65,6 @@
                             <td>{{$requerimiento->cantidad}}</td>
                             <td>{{$requerimiento->hrsAcademic}}</td>
                             <td>{{$requerimiento->materia->name}}</td>
-                            @can('requerimientos.show')
-                                <td class="text-center" width="10px">
-                                    <form action="{{ route('requerimientos.show', $requerimiento->id) }}" method="GET">
-                                        <button class="btn btn-info px-3 btn-sm" type="submit"><i class="fas fa-eye"></i></button>
-                                    </form>
-                                </td>
-                            @endcan
                             @can('requerimientos.edit')
                                 <td class="text-center" width="10px">
                                     <form action="{{ route('requerimientos.edit', $requerimiento->id) }}" method="GET">

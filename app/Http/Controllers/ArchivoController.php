@@ -35,18 +35,18 @@ class ArchivoController extends Controller
                 $convocatoria = Convocatoria::find($documento->convocatoria_id);
                 $postulation = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$convocatoria->id)->firstOrFail();
                 $archivos = Archivo::where('documento_id','=',$request->documento_id)->where('postulation_id','=',$postulation->id)->count();
-                
+
                 if ($archivos == 0) {
                     $archivo = new Archivo();
                     $archivo->documento_id=$request->input('documento_id');
                     $archivo->postulation_id=$postulation->id;
-            
+
                     if($request->file('file')){
-                        $path = Storage::disk('public')->put('documentos',  $request->file('file'));
+                        $path = Storage::disk('public')->put('documentosA',  $request->file('file'));
                         $archivo->fill(['file' => asset($path)])->save();
                     }
                     $archivo->save();
-            
+
                     return back()->with('confirmacion','Archivo subido Correctamente');
                 } else {
                     return back()->with('negacion','Documento ya subido');
@@ -57,7 +57,7 @@ class ArchivoController extends Controller
         } else {
             return back()->with('negacion','Solo para postulantes');
         }
-        
+
 
     }
 

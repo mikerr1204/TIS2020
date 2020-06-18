@@ -5,6 +5,15 @@
     <div class="col">
         <h3>Detalles de Merito</h3>
     </div>
+    <div class="col">
+        <div class="d-flex justify-content-end">
+            @can('comisionario.view')
+                <a href="{{ route('certificados.index', $merito->id) }}">
+                    <button type="button" class="btn btn-success btn-sm">Ver Certificados</button>
+                </a>
+            @endcan
+        </div>
+    </div>
 </div>
 <div style="position: relative; height: 450px; margin-top: .5rem; overflow: auto;">
     <table class="table table-sm table-hover table-bordered">
