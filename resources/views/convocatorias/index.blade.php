@@ -29,6 +29,11 @@
                 <th>
                     <strong>Fin</strong>
                 </th>
+                @can('certificados.show')
+                    <th class="text-center">
+                        <strong>Certificados</strong>
+                    </th>
+                @endcan
                 @can('convocatorias.show')
                     <th class="text-center">
                         <strong>Ver</strong>
@@ -52,6 +57,13 @@
                     <td>{{$convocatoria->titulo}}</td>
                     <td>{{$convocatoria->fechaIni}}</td>
                     <td>{{$convocatoria->fechaFin}}</td>
+                    @can('postulations.index')
+                        <td class="text-center" width="10px">
+                            <a href="{{ route('postulations.perConvocatoria', $convocatoria->id) }}">
+                                <button class="btn btn-dark btn-sm">Ver postulaciones</button>
+                            </a>
+                        </td>
+                    @endcan
                     @can('convocatorias.show')
                         <td class="text-center" width="10px">
                             <form action="{{ route('convocatorias.show', $convocatoria->id) }}" method="GET">

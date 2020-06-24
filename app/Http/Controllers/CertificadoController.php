@@ -29,14 +29,14 @@ class CertificadoController extends Controller
         if ($rol == 1) {
             $postulations = $user->postulations->count();
             if ($postulations != 0) {
-                $merito = Merito::find($request->merito_id);
+                $merito = Merito::find($request->postulation_id);
                 $convocatoria = Convocatoria::find($merito->convocatoria_id);
                 $postulation = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$convocatoria->id)->firstOrFail();
 
                 $certificado = new Certificado();
                 $certificado->name=$request->input('name');
                 $certificado->puntaje=$this->detectarPuntaje($request->input('tipo'));
-                $certificado->merito_id=$request->input('merito_id');
+                $certificado->postulation_id=$request->input('postulation_id');
                 $certificado->postulation_id=$postulation->id;
 
                 if($request->file('file')){
@@ -67,9 +67,9 @@ class CertificadoController extends Controller
         return $puntaje;
     }
 
-    public function showCertificados($merito_id)
+    public function showCertificados($postulation_id)
     {
-        $certificados = Certificado::where('merito_id', '=', $merito_id)->get();
+        $certificados = Certificado::where('postulation_id', '=', $postulation_id)->get();
         return view('certificados.index', compact('certificados'));
     }
 
@@ -89,10 +89,13 @@ class CertificadoController extends Controller
         return redirect('meritos')->with('confirmacion','Puntaje Cambiado Correctamente');
     }
 
-    public function download($id) {
+    public function viewPDF($id) {
         $certificado = Certificado::find($id)->firstOrFail();
         $file = strrchr($certificado->file, '/');
-        return  response()->download(public_path('meritosA'.$file));
+        $path = public_path('meritosA'.$file);
+        return response()->file($path);
+        return view('certificados.viewPDF', compact('path', 'certificado'));
+        // return  response()->download(public_path('meritosA'.$file));
     }
 
     public function destroy($id)

@@ -28,7 +28,7 @@ class PostulationController extends Controller
         $user = Auth::user();
         $cont = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$request->convocatoria_id)->count();
         $rol = $user->roles->where('name','=','Postulante')->count();
-        
+
         if ($rol == 1) {
             if ($cont == 0) {
                 $postulation = new Postulation();
@@ -50,6 +50,11 @@ class PostulationController extends Controller
         $convocatoria = $postulation->convocatoria;
         $archivos = $postulation->archivos;
         return view('postulations.show', compact('postulation', 'convocatoria', 'archivos'));
+    }
+
+    public function postulationsPerConvocatoria ($convocatoria_id) {
+        $postulations = Postulation::where('convocatoria_id', '=', $convocatoria_id)->get();
+        return view('postulations.perConvocatoria', compact('postulations'));
     }
 
     public function edit(Postulation $postulation)

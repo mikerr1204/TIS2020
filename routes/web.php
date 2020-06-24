@@ -100,6 +100,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('postulations/store', 'PostulationController@store')->name('postulations.store')
 	->middleware('permission:postulations.create');
 
+	Route::get('postulations/{convocatoria}/certificados', 'PostulationController@postulationsPerConvocatoria')
+		->name('postulations.perConvocatoria')
+		->middleware('permission:postulations.index');
+
 	Route::get('postulations', 'PostulationController@index')->name('postulations.index')
 		->middleware('permission:postulations.index');
 
@@ -279,7 +283,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('certificados/store', 'CertificadoController@store')->name('certificados.store')
 	->middleware('permission:certificados.create');
 
-	Route::get('meritos/{merito}/certificados', 'CertificadoController@showCertificados')->name('certificados.index')
+	Route::get('meritos/{postulation}/certificados', 'CertificadoController@showCertificados')->name('certificados.index')
 		->middleware('permission:certificados.index');
 
 	Route::get('certificados/create', 'CertificadoController@create')->name('certificados.create')
@@ -294,8 +298,8 @@ Route::middleware(['auth'])->group(function () {
 	Route::delete('certificados/{certificado}', 'CertificadoController@destroy')->name('certificados.destroy')
 			->middleware('permission:certificados.destroy');
 
-	Route::get('certificados/{certificado}/download', 'CertificadoController@download')->name('certificados.download')
-		->middleware('permission:certificados.download');
+	Route::get('certificados/{certificado}/view', 'CertificadoController@viewPDF')->name('certificados.viewPDF')
+		->middleware('permission:archivos.show');
 
 	Route::get('certificados/{certificado}/edit', 'CertificadoController@edit')->name('certificados.edit')
 		->middleware('permission:certificados.edit');

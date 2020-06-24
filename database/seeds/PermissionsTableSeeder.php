@@ -347,5 +347,15 @@ class PermissionsTableSeeder extends Seeder
             'slug'  => 'meritos.destroy',
             'description'  => 'Eliminar las Meritos del sistema',
         ]);
+        Permission::create([
+            'name'  => 'Ver Convocatorias',
+            'slug'  => 'convocatorias.show',
+            'description'  => 'Ver convocatorias en el sistema',
+        ]);
+        Permission::create([
+            'name'  => 'Editar puntaje',
+            'slug'  => 'puntaje.edit',
+            'description'  => 'Editar puntaje del certificado',
+        ]);
     }
 }

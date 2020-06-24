@@ -22,14 +22,14 @@
                 <th>
                     <strong>Puntaje</strong>
                 </th>
-                @can('comisionario.edit')
+                @can('certificados.edit')
                     <th class="text-center">
-                        <strong>Editar</strong>
+                        <strong>Editar Puntaje</strong>
                     </th>
                 @endcan
-                @can('comisionario.download')
+                @can('archivos.show')
                     <th class="text-center">
-                        <strong>Descargar</strong>
+                        <strong>Ver archivo</strong>
                     </th>
                 @endcan
             </tr>
@@ -40,17 +40,17 @@
                     <td>{{$certificado->name}}</td>
                     <td>{{$certificado->id}}</td>
                     <td>{{$certificado->puntaje}}</td>
-                    @can('comisionario.edit')
+                    @can('certificados.edit')
                         <td class="text-center" width="10px">
                             <form action="{{ route('certificados.edit', $certificado->id) }}" method="GET">
                                 <button class="btn btn-warning px-3 btn-sm" type="submit"><i class="fas fa-edit"></i></button>
                             </form>
                         </td>
                     @endcan
-                    @can('comisionario.download')
+                    @can('archivos.show')
                         <td class="text-center" width="10px">
-                            <a href=" {{ route('certificados.download', $certificado->id) }} ">
-                                <button class="btn px-3 btn-sm" type="submit"><i class="fas fa-download"></i></button>
+                            <a href=" {{ route('certificados.viewPDF', $certificado->id) }} ">
+                                <button class="btn px-3 btn-sm" type="submit"><i class="fas fa-eye"></i></button>
                             </a>
                         </td>
                     @endcan
