@@ -354,7 +354,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
         Permission::create([
             'name'  => 'Editar puntaje',
-            'slug'  => 'puntaje.edit',
+            'slug'  => 'puntajes.edit',
             'description'  => 'Editar puntaje del certificado',
         ]);
     }

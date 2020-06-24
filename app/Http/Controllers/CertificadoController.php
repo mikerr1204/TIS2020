@@ -29,14 +29,14 @@ class CertificadoController extends Controller
         if ($rol == 1) {
             $postulations = $user->postulations->count();
             if ($postulations != 0) {
-                $merito = Merito::find($request->postulation_id);
+                $merito = Merito::find($request->merito_id);
                 $convocatoria = Convocatoria::find($merito->convocatoria_id);
                 $postulation = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$convocatoria->id)->firstOrFail();
 
                 $certificado = new Certificado();
                 $certificado->name=$request->input('name');
                 $certificado->puntaje=$this->detectarPuntaje($request->input('tipo'));
-                $certificado->postulation_id=$request->input('postulation_id');
+                $certificado->merito_id=$request->input('merito_id');
                 $certificado->postulation_id=$postulation->id;
 
                 if($request->file('file')){
@@ -86,7 +86,7 @@ class CertificadoController extends Controller
         $certificado->puntaje = $request->input('puntaje');;
         $certificado->save();
 
-        return redirect('meritos')->with('confirmacion','Puntaje Cambiado Correctamente');
+        return redirect('convocatorias')->with('confirmacion','Puntaje Cambiado Correctamente');
     }
 
     public function viewPDF($id) {

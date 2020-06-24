@@ -29,9 +29,9 @@
                 <th>
                     <strong>Fin</strong>
                 </th>
-                @can('certificados.show')
+                @can('postulations.index')
                     <th class="text-center">
-                        <strong>Certificados</strong>
+                        <strong>Postulaciones</strong>
                     </th>
                 @endcan
                 @can('convocatorias.show')

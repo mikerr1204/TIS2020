@@ -19,7 +19,7 @@
                 <th>
                     <strong>ID del postulante</strong>
                 </th>
-                @can('certificados.show')
+                @can('certificados.index')
                     <th>
                         <strong>Ver archivos</strong>
                     </th>
@@ -31,9 +31,9 @@
                 <tr>
                     <td>{{$postulation->id}}</td>
                     <td>{{$postulation->user_id}}</td>
-                    @can('certificados.show')
+                    @can('certificados.index')
                         <td class="text-center" width="10px">
-                            <a action="{{ route('certificados.index', $postulation->id) }}" method="GET">
+                            <a href="{{ route('certificados.index', $postulation->id) }}">
                                 <button class="btn btn-info px-3 btn-sm"><i class="fas fa-eye"></i></button>
                             </a>
                         </td>

@@ -134,13 +134,6 @@ class RolesTableSeeder extends Seeder
             'role_id'=> '3',
         ));
 
-        // Ver perfil de convocatoria
-        // convocatorias.show
-        \DB::table('permission_role')->insert(array(
-            'permission_id'    => '62',
-            'role_id'=> '3',
-        ));
-
         // Ver pdf del certificado
         // certificados.show
         \DB::table('permission_role')->insert(array(
@@ -149,9 +142,9 @@ class RolesTableSeeder extends Seeder
         ));
 
         // Editar puntajes
-        // puntajes.edit
+        // certificados.edit
         \DB::table('permission_role')->insert(array(
-            'permission_id'    => '63',
+            'permission_id'    => '30',
             'role_id'=> '3',
         ));
 
