@@ -154,5 +154,33 @@ class RolesTableSeeder extends Seeder
             'permission_id'    => '23',
             'role_id'=> '3',
         ));
+
+        // Editar puntaje
+        // puntajes.edit
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '63',
+            'role_id'=> '2',
+        ));
+
+        // Crear puntaje
+        // puntajes.create
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '64',
+            'role_id'=> '2',
+        ));
+
+        // Ver puntaje
+        // puntajes.show
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '65',
+            'role_id'=> '2',
+        ));
+
+        // Borrar puntaje
+        // puntajes.destroy
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '66',
+            'role_id'=> '2',
+        ));
     }
 }

@@ -39,4 +39,9 @@ class Convocatoria extends Model
     {
         return $this->hasMany(Merito::class);
     }
+
+    public function puntajes()
+    {
+        return $this->hasMany(Puntaje::class);
+    }
 }

@@ -352,10 +352,27 @@ class PermissionsTableSeeder extends Seeder
             'slug'  => 'convocatorias.show',
             'description'  => 'Ver convocatorias en el sistema',
         ]);
+
+        // Puntajes
         Permission::create([
             'name'  => 'Editar puntaje',
             'slug'  => 'puntajes.edit',
             'description'  => 'Editar puntaje del certificado',
+        ]);
+        Permission::create([
+            'name'  => 'Crear puntaje',
+            'slug'  => 'puntajes.create',
+            'description'  => 'Crear puntaje en una convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Ver puntaje',
+            'slug'  => 'puntajes.show',
+            'description'  => 'Ver puntajes en la convocatoria',
+        ]);
+        Permission::create([
+            'name'  => 'Eliminar puntaje',
+            'slug'  => 'puntajes.destroy',
+            'description'  => 'Eliminar puntaje del certificado',
         ]);
     }
 }

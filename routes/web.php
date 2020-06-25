@@ -303,4 +303,26 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('certificados/{certificado}/edit', 'CertificadoController@edit')->name('certificados.edit')
 		->middleware('permission:certificados.edit');
+
+	//Puntajes
+	Route::post('{convocatoria}/puntajes/store', 'PuntajeController@store')->name('puntajes.store')
+	->middleware('permission:puntajes.create');
+
+	Route::get('{convocatoria}/puntajes', 'PuntajeController@index')->name('puntajes.index')
+		->middleware('permission:puntajes.index');
+
+	Route::get('puntajes/create', 'PuntajeController@create')->name('puntajes.create')
+		->middleware('permission:puntajes.create');
+
+	Route::put('puntajes/{puntaje}', 'PuntajeController@update')->name('puntajes.update')
+		->middleware('permission:puntajes.edit');
+
+	Route::get('puntajes/{puntaje}', 'PuntajeController@show')->name('puntajes.show')
+		->middleware('permission:puntajes.show');
+
+	Route::delete('puntajes/{puntaje}', 'PuntajeController@destroy')->name('puntajes.destroy')
+		->middleware('permission:puntajes.destroy');
+
+	Route::get('puntajes/{puntaje}/edit', 'PuntajeController@edit')->name('puntajes.edit')
+		->middleware('permission:puntajes.edit');
 });

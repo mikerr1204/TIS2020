@@ -27,13 +27,11 @@
         </div>
         <div class="form-row">
             <div class="col">
-                <label for="tipo">Tipo de merito:</label>
-                <select id="tipo" name="tipo">
-                    <option value="docente">Auxiliar docente.</option>
-                    <option value="auxiliar">Auxiliar comun.</option>
-                    <option value="interno">Certificado interno universitario</option>
-                    <option value="externo">Certificado externo</option>
-                    <option value="externo">Certificado externo</option>
+                <label for="valor">Puntaje</label>
+                <select class="browser-default custom-select" id="puntaje_id" name="puntaje_id">
+                    @foreach ($convocatoria->puntajes as $puntaje)
+                        <option value="{{$puntaje->valor}}"> {{$puntaje->descripcion}} </option>
+                    @endforeach
                 </select>
             </div>
         </div>

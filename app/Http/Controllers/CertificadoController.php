@@ -6,6 +6,7 @@ use App\Certificado;
 use App\Merito;
 use App\Postulation;
 use App\Convocatoria;
+use App\Puntaje;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -30,12 +31,13 @@ class CertificadoController extends Controller
             $postulations = $user->postulations->count();
             if ($postulations != 0) {
                 $merito = Merito::find($request->merito_id);
+                $puntaje = Puntaje::find($request->puntaje_id);
                 $convocatoria = Convocatoria::find($merito->convocatoria_id);
                 $postulation = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$convocatoria->id)->firstOrFail();
 
                 $certificado = new Certificado();
                 $certificado->name=$request->input('name');
-                $certificado->puntaje=$this->detectarPuntaje($request->input('tipo'));
+                $certificado->puntaje=$request->input('puntaje_id');
                 $certificado->merito_id=$request->input('merito_id');
                 $certificado->postulation_id=$postulation->id;
 
@@ -52,19 +54,6 @@ class CertificadoController extends Controller
         } else {
             return back()->with('negacion','Solo para postulantes');
         }
-    }
-
-    private function detectarPuntaje(string $tipo) {
-        $puntaje = 0;
-        if ($tipo == 'docente') {
-            $puntaje = 2;
-        } else if ($tipo == 'invalido') {
-            $puntaje = 0;
-        } else {
-            $puntaje = 1;
-        }
-
-        return $puntaje;
     }
 
     public function showCertificados($postulation_id)
