@@ -24,7 +24,7 @@
         <h2 class="article__title">{{ $postulation->convocatoria->titulo }}</h2>
         <div class="article__content">{{ $postulation->convocatoria->description }}</div>
         <div>
-            <h4><strong>Documnetos a Presentar</strong></h4>
+            <h4><strong>Documentos a Presentar</strong></h4>
             <ul>
                 @foreach ($postulation->convocatoria->documentos as $documento)
                     <li>{{$documento->descripcion}} - {{$documento->importancia}}</li>
@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div>
-            <h4><strong>Documnetos subitos</strong></h4>
+            <h4><strong>Documentos subitos</strong></h4>
             <table class="table table-sm table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>
@@ -98,12 +98,13 @@
             </table>
         </div>
         <div>
-            <h4><strong>Meritos subitos</strong></h4>
+            <h4><strong>Meritos subidos</strong></h4>
             <table class="table table-sm table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>
                         <th>Titulo</th>
                         <th>Archivo</th>
+                        <th>Puntaje</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
@@ -114,6 +115,7 @@
                             <td>
                                 <a href="{{ $certificado->file }}" download="{{ $certificado->name }}">Descargar</a>
                             </td>
+                            <td>{{ $certificado->puntaje }}</td>
                             @can('certificados.destroy')
                                 <td class="text-center" width="10px">
                                     <form action="{{ route('certificados.destroy', $certificado->id) }}" method="POST">

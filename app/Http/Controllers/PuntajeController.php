@@ -15,9 +15,9 @@ class PuntajeController extends Controller
         return view('puntajes.index', compact('puntajes', 'convocatoria'));
     }
 
-    public function create()
+    public function create($convocatoria)
     {
-        return view('puntajes.create');
+        return view('puntajes.create', compact('convocatoria'));
     }
 
     public function store(Request $request, $convocatoria_id)
