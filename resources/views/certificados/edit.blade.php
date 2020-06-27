@@ -3,7 +3,7 @@
 @section('content')
 <div class="row m-0">
     <div class="col">
-        <h3>Editar Puntaje</h3>
+        <h3>Editar Puntaje del archivo Merito</h3>
     </div>
 </div>
 <div class="row justify-content-md-center m-0" style="position: relative; height: 450px; margin-top: .5rem; overflow: auto;">

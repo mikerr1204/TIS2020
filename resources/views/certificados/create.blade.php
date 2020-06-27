@@ -1,5 +1,5 @@
 <div class="modal-header text-center">
-    <h4 class="modal-title w-100 font-weight-bold">Postularme a Convocatoria</h4>
+    <h4 class="modal-title w-100 font-weight-bold">Subir archivo de Merito</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>

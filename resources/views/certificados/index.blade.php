@@ -3,7 +3,7 @@
 @section('content')
 <div class="row m-0">
     <div class="col">
-        <h3>Listar Certificados</h3>
+        <h3>Listar archivos de Merito</h3>
     </div>
 </div>
 <div style="position: relative; height: 480px; margin-top: .5rem; overflow: auto;">
