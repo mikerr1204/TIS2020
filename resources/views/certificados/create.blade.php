@@ -1,5 +1,5 @@
 <div class="modal-header text-center">
-    <h4 class="modal-title w-100 font-weight-bold">Postularme a Convocatoria</h4>
+    <h4 class="modal-title w-100 font-weight-bold">Subir archivo de Merito</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -23,6 +23,16 @@
                     <input type="text"  id="materialRegisterFormName" class="form-control" aria-describedby="materialRegisterFormNameHelpBlock" name="name" value="{{ old('name') }}" required>
                     <label for="materialRegisterFormName">Nombre de Archivo *</label>
                 </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col">
+                <label for="valor">Puntaje</label>
+                <select class="browser-default custom-select" id="puntaje_id" name="puntaje_id">
+                    @foreach ($convocatoria->puntajes as $puntaje)
+                        <option value="{{$puntaje->valor}}"> {{$puntaje->descripcion}} </option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="form-row">

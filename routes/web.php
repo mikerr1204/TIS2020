@@ -47,11 +47,11 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('roles/{role}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
-        
+
 	//Users
     Route::post('users/store', 'UserController@store')->name('users.store')
 		->middleware('permission:users.create');
-	
+
 	Route::get('users', 'UserController@index')->name('users.index')
 		->middleware('permission:users.index');
 
@@ -100,6 +100,10 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('postulations/store', 'PostulationController@store')->name('postulations.store')
 	->middleware('permission:postulations.create');
 
+	Route::get('postulations/{convocatoria}/certificados', 'PostulationController@postulationsPerConvocatoria')
+		->name('postulations.perConvocatoria')
+		->middleware('permission:postulations.index');
+
 	Route::get('postulations', 'PostulationController@index')->name('postulations.index')
 		->middleware('permission:postulations.index');
 
@@ -117,7 +121,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('postulations/{postulation}/edit', 'PostulationController@edit')->name('postulations.edit')
 		->middleware('permission:postulations.edit');
-		
+
 	Route::get('postulations/apply/{id}', 'PostulationController@apply')->name('postulations.apply')
 	->middleware('permission:postulations.apply');
 
@@ -208,7 +212,7 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('documentos/{documento}/edit', 'DocumentoController@edit')->name('documentos.edit')
 		->middleware('permission:documentos.edit');
-		
+
 	//Fechas
 	Route::post('fechas/store', 'FechaController@store')->name('fechas.store')
 	->middleware('permission:fechas.create');
@@ -229,7 +233,7 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:fechas.destroy');
 
 	Route::get('fechas/{fecha}/edit', 'FechaController@edit')->name('fechas.edit')
-		->middleware('permission:fechas.edit');	
+		->middleware('permission:fechas.edit');
 
 	//Meritos
 	Route::post('meritos/store', 'MeritoController@store')->name('meritos.store')
@@ -279,7 +283,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('certificados/store', 'CertificadoController@store')->name('certificados.store')
 	->middleware('permission:certificados.create');
 
-	Route::get('certificados', 'CertificadoController@index')->name('certificados.index')
+	Route::get('meritos/{postulation}/certificados', 'CertificadoController@showCertificados')->name('certificados.index')
 		->middleware('permission:certificados.index');
 
 	Route::get('certificados/create', 'CertificadoController@create')->name('certificados.create')
@@ -292,8 +296,33 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:certificados.show');
 
 	Route::delete('certificados/{certificado}', 'CertificadoController@destroy')->name('certificados.destroy')
-		->middleware('permission:certificados.destroy');
+			->middleware('permission:certificados.destroy');
+
+	Route::get('certificados/{certificado}/view', 'CertificadoController@viewPDF')->name('certificados.viewPDF')
+		->middleware('permission:archivos.show');
 
 	Route::get('certificados/{certificado}/edit', 'CertificadoController@edit')->name('certificados.edit')
 		->middleware('permission:certificados.edit');
+
+	//Puntajes
+	Route::post('{convocatoria}/puntajes/store', 'PuntajeController@store')->name('puntajes.store')
+	->middleware('permission:puntajes.create');
+
+	Route::get('{convocatoria}/puntajes', 'PuntajeController@index')->name('puntajes.index')
+		->middleware('permission:puntajes.index');
+
+	Route::get('puntajes/create', 'PuntajeController@create')->name('puntajes.create')
+		->middleware('permission:puntajes.create');
+
+	Route::put('puntajes/{puntaje}', 'PuntajeController@update')->name('puntajes.update')
+		->middleware('permission:puntajes.edit');
+
+	Route::get('puntajes/{puntaje}', 'PuntajeController@show')->name('puntajes.show')
+		->middleware('permission:puntajes.show');
+
+	Route::delete('puntajes/{puntaje}', 'PuntajeController@destroy')->name('puntajes.destroy')
+		->middleware('permission:puntajes.destroy');
+
+	Route::get('puntajes/{puntaje}/edit', 'PuntajeController@edit')->name('puntajes.edit')
+		->middleware('permission:puntajes.edit');
 });

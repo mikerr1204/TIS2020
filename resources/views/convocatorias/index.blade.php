@@ -29,9 +29,19 @@
                 <th>
                     <strong>Fin</strong>
                 </th>
+                @can('postulations.index')
+                    <th class="text-center">
+                        <strong>Postulaciones</strong>
+                    </th>
+                @endcan
                 @can('convocatorias.show')
                     <th class="text-center">
                         <strong>Ver</strong>
+                    </th>
+                @endcan
+                @can('puntajes.index')
+                    <th class="text-center">
+                        <strong>Puntajes</strong>
                     </th>
                 @endcan
                 @can('convocatorias.edit')
@@ -52,11 +62,25 @@
                     <td>{{$convocatoria->titulo}}</td>
                     <td>{{$convocatoria->fechaIni}}</td>
                     <td>{{$convocatoria->fechaFin}}</td>
+                    @can('postulations.index')
+                        <td class="text-center" width="10px">
+                            <a href="{{ route('postulations.perConvocatoria', $convocatoria->id) }}">
+                                <button class="btn btn-dark btn-sm">Ver postulaciones</button>
+                            </a>
+                        </td>
+                    @endcan
                     @can('convocatorias.show')
                         <td class="text-center" width="10px">
                             <form action="{{ route('convocatorias.show', $convocatoria->id) }}" method="GET">
                                 <button class="btn btn-info px-3 btn-sm" type="submit"><i class="fas fa-eye"></i></button>
                             </form>
+                        </td>
+                    @endcan
+                    @can('puntajes.index')
+                        <td class="text-center" width="10px">
+                            <a href="{{ route('puntajes.index', $convocatoria->id) }}">
+                                <button class="btn btn-secondary btn-sm">Ver puntajes</button>
+                            </a>
                         </td>
                     @endcan
                     @can('convocatorias.edit')

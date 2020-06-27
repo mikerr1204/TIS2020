@@ -20,13 +20,20 @@ class RolesTableSeeder extends Seeder
             'special'   => 'all-access',
         ]);
 
-
         //Postulante
         Role::create([
             'name'      => 'Postulante',
             'slug'      => 'postulante',
             'description'=> 'Persona con control de postulante',
         ]);
+
+        //Comisionario
+        Role::create([
+            'name'      => 'Comisionario',
+            'slug'      => 'comisionario',
+            'description'=> 'Persona con control de comisionario',
+        ]);
+
         // Ver perfil de convocatoria
         // \DB::table('permission_role')->insert(array(
         //     'permission_id'    => '12',
@@ -107,6 +114,80 @@ class RolesTableSeeder extends Seeder
             'permission_id'    => '31',
             'role_id'=> '2',
         ));
-        
+
+        // Editar puntajes
+        // postulations.edit
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '19',
+            'role_id'=> '3',
+        ));
+        // Ver convocatorias
+        // convocatorias.index
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '11',
+            'role_id'=> '3',
+        ));
+        // Ver postulaciones
+        // postulations.index
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '16',
+            'role_id'=> '3',
+        ));
+
+        // Ver pdf del certificado
+        // certificados.show
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '27',
+            'role_id'=> '3',
+        ));
+
+        // Editar puntajes
+        // certificados.edit
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '30',
+            'role_id'=> '3',
+        ));
+
+        // Ver Archivo
+        // archivos.show
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '23',
+            'role_id'=> '3',
+        ));
+
+        // Editar puntaje
+        // puntajes.edit
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '63',
+            'role_id'=> '2',
+        ));
+
+        // Crear puntaje
+        // puntajes.create
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '64',
+            'role_id'=> '2',
+        ));
+
+        // Ver puntaje
+        // puntajes.show
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '65',
+            'role_id'=> '2',
+        ));
+
+        // Borrar puntaje
+        // puntajes.destroy
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '66',
+            'role_id'=> '2',
+        ));
+
+        // Ver lista de puntajes
+        // puntajes.index
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '67',
+            'role_id'=> '2',
+        ));
     }
 }
