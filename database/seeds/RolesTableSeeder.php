@@ -182,5 +182,12 @@ class RolesTableSeeder extends Seeder
             'permission_id'    => '66',
             'role_id'=> '2',
         ));
+
+        // Ver lista de puntajes
+        // puntajes.index
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '67',
+            'role_id'=> '2',
+        ));
     }
 }

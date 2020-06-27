@@ -39,7 +39,7 @@
                         <strong>Ver</strong>
                     </th>
                 @endcan
-                @can('Puntajes.edit')
+                @can('puntajes.index')
                     <th class="text-center">
                         <strong>Puntajes</strong>
                     </th>
@@ -76,7 +76,7 @@
                             </form>
                         </td>
                     @endcan
-                    @can('puntajes.show')
+                    @can('puntajes.index')
                         <td class="text-center" width="10px">
                             <a href="{{ route('puntajes.index', $convocatoria->id) }}">
                                 <button class="btn btn-secondary btn-sm">Ver puntajes</button>

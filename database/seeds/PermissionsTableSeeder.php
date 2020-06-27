@@ -374,5 +374,10 @@ class PermissionsTableSeeder extends Seeder
             'slug'  => 'puntajes.destroy',
             'description'  => 'Eliminar puntaje del certificado',
         ]);
+        Permission::create([
+            'name'  => 'Ver lista de puntajes',
+            'slug'  => 'puntajes.index',
+            'description'  => 'Ver la lista de puntajes del certificado',
+        ]);
     }
 }

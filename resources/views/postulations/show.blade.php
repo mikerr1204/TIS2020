@@ -32,7 +32,7 @@
             </ul>
         </div>
         <div>
-            <h4><strong>Documentos subitos</strong></h4>
+            <h4><strong>Documentos subidos</strong></h4>
             <table class="table table-sm table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>

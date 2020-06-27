@@ -16,7 +16,7 @@ class UsersTableSeeder extends Seeder
         User::create([
             'name'       => 'Adm',
             'apellido'       => 'Adm',
-            'sis'       => '123456789',
+            'sis'       => '223456789',
             'ci'       => '1234567',
             'email'      => 'adm@gmail.com',
             'password'      => '$2y$10$eBGatcDo6yl47bBqW.QHX.6byBlRsRMn/rzjSML86yu1HHdRpexv6',
@@ -44,7 +44,7 @@ class UsersTableSeeder extends Seeder
             'sis'       => '123456777',
             'ci'       => '5905038',
             'email'      => 'comisionario@gmail.com',
-            'password'      => bcrypt('comsionario5905038'),
+            'password'      => bcrypt('comisionario5905038'),
         ]);
         \DB::table('role_user')->insert(array(
             'role_id'    => '3',
@@ -64,6 +64,47 @@ class UsersTableSeeder extends Seeder
         \DB::table('role_user')->insert(array(
             'role_id'    => '2',
             'user_id'=> '4',
+        ));
+
+        User::create([
+            'name'       => 'admin2',
+            'apellido'       => 'admin2',
+            'sis'       => '123456779',
+            'ci'       => '1234577',
+            'email'      => 'admin2@gmail.com',
+            'password'      => bcrypt('1234567'),
+        ]);
+        \DB::table('role_user')->insert(array(
+            'role_id'    => '1',
+            'user_id'=> '5',
+        ));
+
+        User::create([
+            'name'       => 'comisionario2',
+            'apellido'       => 'comisionario2',
+            'sis'       => '123456778',
+            'ci'       => '5905040',
+            'email'      => 'comisionario2@gmail.com',
+            'password'      => bcrypt('1234567'),
+        ]);
+        \DB::table('role_user')->insert(array(
+            'role_id'    => '3',
+            'user_id'=> '6',
+        ));
+
+        User::create([
+            'name'       => 'postulante2',
+            'apellido'       => 'postulante2',
+            'sis'       => '123456789',
+            'valEst'    => '12345678',
+            'valKardex' => '12345678',
+            'ci'       => '5905041',
+            'email'      => 'postulante2@gmail.com',
+            'password'      => bcrypt('1234567'),
+        ]);
+        \DB::table('role_user')->insert(array(
+            'role_id'    => '2',
+            'user_id'=> '7',
         ));
     }
 }
