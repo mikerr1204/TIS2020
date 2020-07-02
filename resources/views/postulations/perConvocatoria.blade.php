@@ -19,9 +19,17 @@
                 <th>
                     <strong>ID del postulante</strong>
                 </th>
+                <th>
+                    <strong>Cumple con requisitos</strong>
+                </th>
                 @can('certificados.index')
                     <th>
-                        <strong>Ver archivos</strong>
+                        <strong>Ver meritos</strong>
+                    </th>
+                @endcan
+                @can('requisitos.index')
+                    <th>
+                        <strong>Ver documentos</strong>
                     </th>
                 @endcan
             </tr>
@@ -31,9 +39,23 @@
                 <tr>
                     <td>{{$postulation->id}}</td>
                     <td>{{$postulation->user_id}}</td>
+                    @if($postulation->validacion == 'cumple')
+                        <td style="color: green;">{{$postulation->validacion}}</td>
+                    @elseif($postulation->validacion == 'no cumple')
+                        <td style="color: red;">{{$postulation->validacion}}</td>
+                    @else
+                        <td style="color: grey;">{{$postulation->validacion}}</td>
+                    @endif
                     @can('certificados.index')
                         <td class="text-center" width="10px">
                             <a href="{{ route('certificados.index', $postulation->id) }}">
+                                <button class="btn btn-info px-3 btn-sm"><i class="fas fa-eye"></i></button>
+                            </a>
+                        </td>
+                    @endcan
+                    @can('requisitos.index')
+                        <td class="text-center" width="10px">
+                            <a href="{{ route('archivos.index', $postulation->id) }}">
                                 <button class="btn btn-info px-3 btn-sm"><i class="fas fa-eye"></i></button>
                             </a>
                         </td>

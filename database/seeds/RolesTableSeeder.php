@@ -34,6 +34,13 @@ class RolesTableSeeder extends Seeder
             'description'=> 'Persona con control de comisionario',
         ]);
 
+        //Comisionario
+        Role::create([
+            'name'      => 'Secretaria',
+            'slug'      => 'secretaria',
+            'description'=> 'Persona con control de secretaria',
+        ]);
+
         // Ver perfil de convocatoria
         // \DB::table('permission_role')->insert(array(
         //     'permission_id'    => '12',
@@ -188,6 +195,47 @@ class RolesTableSeeder extends Seeder
         \DB::table('permission_role')->insert(array(
             'permission_id'    => '67',
             'role_id'=> '2',
+        ));
+
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '11',
+            'role_id'=> '4',
+        ));
+
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '42',
+            'role_id'=> '4',
+        ));
+
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '43',
+            'role_id'=> '4',
+        ));
+
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '45',
+            'role_id'=> '4',
+        ));
+
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '16',
+            'role_id'=> '4',
+        ));
+
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '16',
+            'role_id'=> '4',
+        ));
+
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '17',
+            'role_id'=> '4',
+        ));
+
+        //Editar validacion de postulacion
+        \DB::table('permission_role')->insert(array(
+            'permission_id'    => '19',
+            'role_id'=> '4',
         ));
     }
 }

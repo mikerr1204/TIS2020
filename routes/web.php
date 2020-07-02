@@ -110,7 +110,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('postulations/create', 'PostulationController@create')->name('postulations.create')
 		->middleware('permission:postulations.create');
 
-	Route::put('postulations/{postulation}', 'PostulationController@update')->name('postulations.update')
+	Route::put('postulations/{postulation}', 'PostulationController@validar')->name('postulations.validar')
 		->middleware('permission:postulations.edit');
 
 	Route::get('postulations/{postulation}', 'PostulationController@show')->name('postulations.show')
@@ -261,23 +261,27 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('archivos/store', 'ArchivoController@store')->name('archivos.store')
 	->middleware('permission:archivos.create');
 
-	Route::get('archivos', 'ArchivoController@index')->name('archivos.index')
-		->middleware('permission:archivos.index');
+	Route::get('requisitos/{postulation}/archivos', 'ArchivoController@showArchivoDocumentos')->name('archivos.index')
+		->middleware('permission:requisitos.index');
 
 	Route::get('archivos/create', 'ArchivoController@create')->name('archivos.create')
-		->middleware('permission:archivos.create');
+		->middleware('permission:requisitos.create');
 
 	Route::put('archivos/{archivo}', 'ArchivoController@update')->name('archivos.update')
-		->middleware('permission:archivos.edit');
+		->middleware('permission:requisitos.edit');
 
-	Route::get('archivos/{convocatoria}', 'ArchivoController@show')->name('archivos.show')
-		->middleware('permission:archivos.show');
+	Route::get('archivos/{archivo}', 'ArchivoController@show')->name('archivos.show')
+		->middleware('permission:requisitos.show');
 
 	Route::delete('archivos/{archivo}', 'ArchivoController@destroy')->name('archivos.destroy')
-		->middleware('permission:archivos.destroy');
+			->middleware('permission:requisitos.destroy');
+
+	Route::get('archivos/{archivo}/view', 'ArchivoController@viewPDF')->name('archivos.viewPDF')
+		->middleware('permission:requisitos.show');
 
 	Route::get('archivos/{archivo}/edit', 'ArchivoController@edit')->name('archivos.edit')
-		->middleware('permission:archivos.edit');
+		->middleware('permission:requisitos.edit');
+
 
 	//Certificados
 	Route::post('certificados/store', 'CertificadoController@store')->name('certificados.store')

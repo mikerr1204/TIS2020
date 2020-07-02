@@ -61,18 +61,30 @@ class ArchivoController extends Controller
 
     }
 
-    public function show($id)
+    public function showArchivoDocumentos($postulation_id)
     {
+        $archivos = Archivo::where('postulation_id', '=', $postulation_id)->get();
+        $postulation = Postulation::where('id', '=', $postulation_id)->firstOrFail();
+        return view('archivos.index', compact('archivos', 'postulation'));
     }
 
-    public function edit(Archivo $archivo)
+    public function edit($id)
     {
         //
     }
 
-    public function update(Request $request, Archivo $archivo)
+    public function update(Request $request, $id)
     {
         //
+    }
+
+    public function viewPDF($id) {
+        $archivo = Archivo::find($id)->firstOrFail();
+        $file = strrchr($archivo->file, '/');
+        $path = public_path('documentosA'.$file);
+        return response()->file($path);
+        return view('archivos.viewPDF', compact('path', 'archivo'));
+        // return  response()->download(public_path('meritosA'.$file));
     }
 
     public function destroy($id)

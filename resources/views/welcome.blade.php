@@ -23,17 +23,17 @@
         <header class="default-color">
             @include('welcome.nav')
         </header>
-        
+
         <section class="row m-0">
             <div class="col-sm-3 col-lg-2 p-0">
                 @include('welcome.menu')
             </div>
-        
+
             <div class="col-sm-9 col-lg-10 p-0 pl-2 pt-2">
                 @include('welcome.contenido')
             </div>
         </section>
-    
+
         <footer class="page-footer font-small fixed-bottom blue">
             @include('welcome.footer')
         </footer>

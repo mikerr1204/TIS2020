@@ -379,5 +379,11 @@ class PermissionsTableSeeder extends Seeder
             'slug'  => 'puntajes.index',
             'description'  => 'Ver la lista de puntajes del certificado',
         ]);
+
+        Permission::create([
+            'name'  => 'Ver todo',
+            'slug'  => 'all-access',
+            'description'  => 'Ver todo el sistema',
+        ]);
     }
 }

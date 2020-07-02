@@ -106,5 +106,31 @@ class UsersTableSeeder extends Seeder
             'role_id'    => '2',
             'user_id'=> '7',
         ));
+
+        User::create([
+            'name'       => 'secretaria2',
+            'apellido'       => 'secretaria2',
+            'sis'       => '111111119',
+            'ci'       => '5905045',
+            'email'      => 'secretaria2@gmail.com',
+            'password'      => bcrypt('1234567'),
+        ]);
+        \DB::table('role_user')->insert(array(
+            'role_id'    => '4',
+            'user_id'=> '8',
+        ));
+
+        User::create([
+            'name'       => 'secretaria',
+            'apellido'       => 'secretaria',
+            'sis'       => '111111120',
+            'ci'       => '5905048',
+            'email'      => 'secretaria@gmail.com',
+            'password'      => bcrypt('secretaria5905048'),
+        ]);
+        \DB::table('role_user')->insert(array(
+            'role_id'    => '4',
+            'user_id'=> '9',
+        ));
     }
 }

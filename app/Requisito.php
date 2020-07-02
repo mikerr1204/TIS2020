@@ -9,7 +9,7 @@ class Requisito extends Model
     protected $fillable = [
         'detalle'
     ];
-    
+
     public function convocatoria()
     {
         return $this->belongsTo(Convocatoria::class);
