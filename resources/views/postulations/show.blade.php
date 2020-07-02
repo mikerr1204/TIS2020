@@ -130,6 +130,29 @@
                 </tbody>
             </table>
         </div>
+        <div>
+            <h4><strong>Estado de postulacion</strong></h4>
+            <table class="table table-sm table-hover table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>
+                            <strong>Validacion de la postulacion</strong>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                        @if($postulation->validacion == 'cumple')
+                            <td style="color: green;">Su postulacion ha sido acepta completamente. Felicidades!</td>
+                        @elseif($postulation->validacion == 'no cumple')
+                            <td style="color: red;">Desafortunadamente, usted no cumple con los requisitos que se piden en esta convocatoria.</td>
+                        @else
+                            <td style="color: grey;">En revision.</td>
+                        @endif
+                        </tr>
+                </tbody>
+            </table>
+        </div>
     </article>
 </div>
 
