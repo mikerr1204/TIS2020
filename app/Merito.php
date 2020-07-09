@@ -9,7 +9,7 @@ class Merito extends Model
     protected $fillable = [
         'tipo', 'clase', 'detalle', 'puntaje', 'importancia'
     ];
-    
+
     public function convocatoria()
     {
         return $this->belongsTo(Convocatoria::class);
@@ -18,5 +18,10 @@ class Merito extends Model
     public function certificados()
     {
         return $this->hasMany(Certificado::class);
+    }
+
+    public function puntajes()
+    {
+        return $this->hasMany(Puntaje::class);
     }
 }

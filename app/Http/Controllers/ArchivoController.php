@@ -38,6 +38,8 @@ class ArchivoController extends Controller
 
                 if ($archivos == 0) {
                     $archivo = new Archivo();
+                    $archivo->validacion = 'en revision';
+                    $archivo->titulo=$request->input('titulo');
                     $archivo->documento_id=$request->input('documento_id');
                     $archivo->postulation_id=$postulation->id;
 
@@ -70,12 +72,20 @@ class ArchivoController extends Controller
 
     public function edit($id)
     {
-        //
+        $archivo = Archivo::where('id', '=', $id)->firstOrFail();
+        return view('archivos.edit', compact('archivo'));
     }
 
     public function update(Request $request, $id)
     {
         //
+    }
+
+    public function validar(Request $request, $id) {
+        $archivo = Archivo::find($id);
+        $archivo->validacion = $request->input('validacion');
+        $archivo->save();
+        return redirect('convocatorias')->with('confirmacion','Validacion Editado Correctamente');
     }
 
     public function viewPDF($id) {

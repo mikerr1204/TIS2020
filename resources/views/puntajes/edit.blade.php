@@ -3,7 +3,7 @@
 @section('content')
 <div class="row m-0">
     <div class="col">
-        <h3>Editar Puntaje</h3>
+        <h3>Editar Item</h3>
     </div>
 </div>
 <div class="row justify-content-md-center m-0" style="position: relative; height: 450px; margin-top: .5rem; overflow: auto;">
@@ -22,10 +22,14 @@
             </div>
             <div class="form-row">
                 <div class="col">
-                    <div class="md-form">
-                        <input type="text" id="materialRegisterFormValor" class="form-control" name='valor' value="{{ old('valor') }}" required>{{$puntaje->valor}}
-                        <label for="materialRegisterFormCi">Valor *</label>
-                    </div>
+                    <label for="valor">Valor del puntaje *</label>
+                    <select id="valor" name="valor">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
             </div>
             <button class="btn btn-primary waves-effect" type="submit" data-toggle="modal">Guardar Cambios</button>

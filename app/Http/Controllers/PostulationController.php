@@ -34,7 +34,6 @@ class PostulationController extends Controller
                 $postulation = new Postulation();
                 $postulation->convocatoria_id = $request->convocatoria_id;
                 $postulation->user_id = $user->id;
-                $postulation->validacion = 'en revision';
                 $postulation->save();
                 return redirect('convoc')->with('confirmacion','Postulacion Exitosa');
             } else {
@@ -67,14 +66,6 @@ class PostulationController extends Controller
     public function update(Request $request, Postulation $postulation)
     {
         //
-    }
-
-    public function validar(Request $request, $id) {
-        $postulation = Postulation::find($id);
-        $postulations = Postulation::where('convocatoria_id', '=', $postulation->convocatoria_id)->get();
-        $postulation->validacion = $request->input('validacion');
-        $postulation->save();
-        return redirect('convocatorias')->with('confirmacion','Validacion Editado Correctamente');
     }
 
     public function destroy(Postulation $postulation)

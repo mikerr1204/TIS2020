@@ -29,8 +29,10 @@
             <div class="col">
                 <label for="valor">Puntaje</label>
                 <select class="browser-default custom-select" id="puntaje_id" name="puntaje_id">
-                    @foreach ($convocatoria->puntajes as $puntaje)
-                        <option value="{{$puntaje->valor}}"> {{$puntaje->descripcion}} </option>
+                    @foreach ($convocatoria->meritos as $merito)
+                        @foreach ($merito->puntajes as $puntaje)
+                            <option value="{{$puntaje->valor}}"> {{$puntaje->descripcion}} </option>
+                        @endforeach
                     @endforeach
                 </select>
             </div>

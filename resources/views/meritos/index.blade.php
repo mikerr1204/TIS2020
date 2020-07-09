@@ -28,6 +28,11 @@
                 <th>
                     <strong>Importancia</strong>
                 </th>
+                @can('puntajes.index')
+                    <th class="text-center">
+                        <strong>Ver items</strong>
+                    </th>
+                @endcan
                 @can('meritos.show')
                     <th class="text-center">
                         <strong>Ver</strong>
@@ -53,6 +58,13 @@
                     <td>{{$merito->detalle}}</td>
                     <td>{{$merito->puntos}}</td>
                     <td>{{$merito->importancia}}</td>
+                    @can('puntajes.index')
+                        <td class="text-center" width="10px">
+                            <a href="{{ route('puntajes.index', $merito->id) }}">
+                                <button class="btn btn-dark px-3 btn-sm"><i class="fas fa-eye"></i></button>
+                            </a>
+                        </td>
+                    @endcan
                     @can('meritos.show')
                         <td class="text-center" width="10px">
                             <form action="{{ route('meritos.show', $merito->id) }}" method="GET">

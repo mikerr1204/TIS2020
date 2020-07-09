@@ -39,11 +39,6 @@
                         <strong>Ver</strong>
                     </th>
                 @endcan
-                @can('puntajes.index')
-                    <th class="text-center">
-                        <strong>Puntajes</strong>
-                    </th>
-                @endcan
                 @can('convocatorias.edit')
                     <th class="text-center">
                         <strong>Editar</strong>
@@ -65,7 +60,7 @@
                     @can('postulations.index')
                         <td class="text-center" width="10px">
                             <a href="{{ route('postulations.perConvocatoria', $convocatoria->id) }}">
-                                <button class="btn btn-dark btn-sm">Ver postulaciones</button>
+                                <button class="btn btn-dark px-3 btn-sm"><i class="fas fa-eye"></i></button>
                             </a>
                         </td>
                     @endcan
@@ -74,13 +69,6 @@
                             <form action="{{ route('convocatorias.show', $convocatoria->id) }}" method="GET">
                                 <button class="btn btn-info px-3 btn-sm" type="submit"><i class="fas fa-eye"></i></button>
                             </form>
-                        </td>
-                    @endcan
-                    @can('puntajes.index')
-                        <td class="text-center" width="10px">
-                            <a href="{{ route('puntajes.index', $convocatoria->id) }}">
-                                <button class="btn btn-secondary btn-sm">Ver puntajes</button>
-                            </a>
                         </td>
                     @endcan
                     @can('convocatorias.edit')

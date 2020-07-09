@@ -17,7 +17,6 @@ class CreatePostulationsTable extends Migration
             $table->increments('id');
             $table->integer('convocatoria_id')->unsigned();
             $table->integer('user_id')->unsigned();
-            $table->string('validacion')->default('en revision');
 
             $table->timestamps();
 

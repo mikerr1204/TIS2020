@@ -7,6 +7,14 @@
 <div class="modal-body mx-3">
     <form action="{{ route('archivos.store') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
+        <div class="form-row">
+            <div class="col">
+                <div class="md-form">
+                    <input type="text"  id="materialRegisterFormName" class="form-control" aria-describedby="materialRegisterFormNameHelpBlock" name="titulo" required>
+                    <label for="materialRegisterFormName">Nombre del Documento</label>
+                </div>
+            </div>
+        </div>
         <div class="form-row pb-4">
             <div class="col">
                 <label for="roles">Documento</label>

@@ -34,20 +34,32 @@ class CertificadoController extends Controller
                 $puntaje = Puntaje::find($request->puntaje_id);
                 $convocatoria = Convocatoria::find($merito->convocatoria_id);
                 $postulation = Postulation::where('user_id','=',$user->id)->where('convocatoria_id','=',$convocatoria->id)->firstOrFail();
+                $archivos = $postulation->archivos->count();
+                $documentos = $convocatoria->documentos->where('importancia','=','Obligatorio')->count();
+                if ($archivos == $documentos) {
+                    $sumCertificados = $postulation->certificados->sum('puntaje') + $request->input('puntaje_id');
+                    $meritoPuntaje = Merito::where('id', '=', $request->input('merito_id'))->firstOrFail();
+                    $puntaje = $meritoPuntaje->puntos;
+                    if($sumCertificados > $puntaje) {
+                        return back()->with('negacion','Usted ha superado el puntaje maximo para este merito');
+                    } else {
+                        $certificado = new Certificado();
+                        $certificado->name=$request->input('name');
+                        $certificado->puntaje=$request->input('puntaje_id');
+                        $certificado->merito_id=$request->input('merito_id');
+                        $certificado->postulation_id=$postulation->id;
 
-                $certificado = new Certificado();
-                $certificado->name=$request->input('name');
-                $certificado->puntaje=$request->input('puntaje_id');
-                $certificado->merito_id=$request->input('merito_id');
-                $certificado->postulation_id=$postulation->id;
+                        if($request->file('file')){
+                            $path = Storage::disk('public')->put('meritosA',  $request->file('file'));
+                            $certificado->fill(['file' => asset($path)])->save();
+                        }
+                        $certificado->save();
 
-                if($request->file('file')){
-                    $path = Storage::disk('public')->put('meritosA',  $request->file('file'));
-                    $certificado->fill(['file' => asset($path)])->save();
+                        return back()->with('confirmacion','Merito subido Correctamente');
+                    }
+                } else {
+                    return back()->with('negacion','Primero debe subir los documentos obligatorios');
                 }
-                $certificado->save();
-
-                return back()->with('confirmacion','Merito subido Correctamente');
             } else {
                 return back()->with('negacion','Primero debe postularse');
             }

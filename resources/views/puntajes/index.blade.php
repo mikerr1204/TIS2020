@@ -3,12 +3,12 @@
 @section('content')
 <div class="row m-0">
     <div class="col">
-        <h3>Listar Puntajes de una Convocatoria</h3>
+        <h3>Listar de Items de un merito</h3>
     </div>
     @can('puntajes.create')
         <div class="col">
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#modalLogin-{{ $convocatoria->id }}">Nuevo</button>
+                <button type="button" class="btn btn-success btn-sm"data-toggle="modal" data-target="#modalLogin-{{ $merito->id }}">Nuevo</button>
             </div>
         </div>
     @endcan
@@ -78,10 +78,10 @@
 </div>
 
 
-<div class="modal fade" id="modalLogin-{{ $convocatoria->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalLogin-{{ $merito->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            @include('puntajes.create', $convocatoria)
+            @include('puntajes.create', $merito)
         </div>
     </div>
 </div>

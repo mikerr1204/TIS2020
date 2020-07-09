@@ -17,6 +17,8 @@ class CreateArchivosTable extends Migration
             $table->increments('id');
             $table->string('file', 128)->nullable();
 
+            $table->string('titulo');
+            $table->string('validacion')->default('en revision');
             $table->integer('documento_id')->unsigned();
             $table->integer('postulation_id')->unsigned();
 

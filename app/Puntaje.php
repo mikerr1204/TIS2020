@@ -12,8 +12,8 @@ class Puntaje extends Model
         'descripcion', 'valor'
     ];
 
-    public function convocatoria()
+    public function merito()
     {
-        return $this->belongsTo(Convocatoria::class);
+        return $this->belongsTo(Merito::class);
     }
 }

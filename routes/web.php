@@ -270,6 +270,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::put('archivos/{archivo}', 'ArchivoController@update')->name('archivos.update')
 		->middleware('permission:requisitos.edit');
 
+	Route::put('archivos/{archivo}/validar', 'ArchivoController@validar')->name('archivos.validar')
+		->middleware('permission:requisitos.edit');
+
 	Route::get('archivos/{archivo}', 'ArchivoController@show')->name('archivos.show')
 		->middleware('permission:requisitos.show');
 
@@ -309,10 +312,10 @@ Route::middleware(['auth'])->group(function () {
 		->middleware('permission:certificados.edit');
 
 	//Puntajes
-	Route::post('{convocatoria}/puntajes/store', 'PuntajeController@store')->name('puntajes.store')
+	Route::post('{merito}/puntajes/store', 'PuntajeController@store')->name('puntajes.store')
 	->middleware('permission:puntajes.create');
 
-	Route::get('{convocatoria}/puntajes', 'PuntajeController@index')->name('puntajes.index')
+	Route::get('{merito}/puntajes', 'PuntajeController@index')->name('puntajes.index')
 		->middleware('permission:puntajes.index');
 
 	Route::get('puntajes/create', 'PuntajeController@create')->name('puntajes.create')

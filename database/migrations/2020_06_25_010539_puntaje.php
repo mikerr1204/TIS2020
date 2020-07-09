@@ -18,12 +18,12 @@ class Puntaje extends Migration
             $table->string('descripcion');
             $table->integer('valor');
 
-            $table->integer('convocatoria_id')->unsigned();
+            $table->integer('merito_id')->unsigned();
 
             $table->timestamps();
 
             //relation
-            $table->foreign('convocatoria_id')->references('id')->on('convocatorias')
+            $table->foreign('merito_id')->references('id')->on('meritos')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });

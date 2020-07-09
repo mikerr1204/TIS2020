@@ -3,7 +3,7 @@
 @section('content')
 <div class="row m-0">
     <div class="col">
-        <h3>Detalles de Puntaje</h3>
+        <h3>Detalles de Item</h3>
     </div>
 </div>
 <div style="position: relative; height: 450px; margin-top: .5rem; overflow: auto;">
@@ -18,8 +18,8 @@
                 <td>{{$puntaje->valor}}</td>
             </tr>
             <tr>
-                <td>Convocatoria</td>
-                <td>{{$puntaje->convocatoria_id}}</td>
+                <td>Merito</td>
+                <td>{{$puntaje->merito_id}}</td>
             </tr>
         </tbody>
     </table>

@@ -5,7 +5,7 @@
     </button>
 </div>
 <div class="modal-body mx-3">
-    <form action="{{ route('puntajes.store', $convocatoria->id) }}" method="POST">
+    <form action="{{ route('puntajes.store', $merito->id) }}" method="POST">
         {{ csrf_field() }}
         <div class="form-row">
             <div class="col">

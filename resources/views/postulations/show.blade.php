@@ -24,7 +24,7 @@
         <h2 class="article__title">{{ $postulation->convocatoria->titulo }}</h2>
         <div class="article__content">{{ $postulation->convocatoria->description }}</div>
         <div>
-            <h4><strong>Documentos a Presentar</strong></h4>
+            <h4><strong>Documentos de los requerimientos Presentar</strong></h4>
             <ul>
                 @foreach ($postulation->convocatoria->documentos as $documento)
                     <li>{{$documento->descripcion}} - {{$documento->importancia}}</li>
@@ -82,6 +82,9 @@
                         <th>
                             <strong>Importancia</strong>
                         </th>
+                        <th>
+                            <strong>Archivos</strong>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -92,30 +95,46 @@
                             <td>{{$merito->detalle}}</td>
                             <td>{{$merito->puntos}}</td>
                             <td>{{$merito->importancia}}</td>
+                            <td>
+                                @foreach ($merito->certificados as $certificado)
+                                    <li class="d-flex">
+                                        <a href="{{ $certificado->file }}" >{{ $certificado->name }}</a>
+                                        <form action="{{ route('certificados.destroy', $certificado->id) }}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button class="btn btn-danger px-3 btn-sm" type="button" onclick="if(confirm('Deseas continuar?')){ this.form.submit();}"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </li>
+                                @endforeach
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
         <div>
-            <h4><strong>Meritos subidos</strong></h4>
+            <h4><strong>Meritos subitos</strong></h4>
             <table class="table table-sm table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>
+                        <th>Merito</th>
+                        <th>Clase</th>
                         <th>Titulo</th>
-                        <th>Archivo</th>
                         <th>Puntaje</th>
+                        <th>Archivo</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($postulation->certificados as $certificado)
                         <tr>
+                            <td>{{ $certificado->merito->tipo}}</td>
+                            <td>{{ $certificado->merito->clase}}</td>
                             <td>{{ $certificado->name}}</td>
+                            <td>{{ $certificado->puntaje}}</td>
                             <td>
                                 <a href="{{ $certificado->file }}" download="{{ $certificado->name }}">Descargar</a>
                             </td>
-                            <td>{{ $certificado->puntaje }}</td>
                             @can('certificados.destroy')
                                 <td class="text-center" width="10px">
                                     <form action="{{ route('certificados.destroy', $certificado->id) }}" method="POST">
@@ -131,25 +150,31 @@
             </table>
         </div>
         <div>
-            <h4><strong>Estado de postulacion</strong></h4>
+            <h4><strong>Documentos subidos</strong></h4>
             <table class="table table-sm table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>
+                        <th>
+                            <strong>Titulo</strong>
+                        </th>
                         <th>
                             <strong>Validacion de la postulacion</strong>
                         </th>
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($postulation->archivos as $archivo)
                         <tr>
-                        @if($postulation->validacion == 'cumple')
-                            <td style="color: green;">Su postulacion ha sido acepta completamente. Felicidades!</td>
-                        @elseif($postulation->validacion == 'no cumple')
-                            <td style="color: red;">Desafortunadamente, usted no cumple con los requisitos que se piden en esta convocatoria.</td>
-                        @else
-                            <td style="color: grey;">En revision.</td>
-                        @endif
+                            <td>{{$archivo->titulo}}</td>
+                            @if($archivo->validacion == 'cumple')
+                                <td style="color: green;">El documento cumple con las especificaciones. Felicidades!</td>
+                            @elseif($archivo->validacion == 'no cumple')
+                                <td style="color: red;">Desafortunadamente, el documento no con los requisitos que se piden en esta convocatoria.</td>
+                            @else
+                                <td style="color: grey;">En revision.</td>
+                            @endif
                         </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
